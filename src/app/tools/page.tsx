@@ -10,6 +10,8 @@ const gradientColors = [
   'from-amber-500 to-orange-500', 'from-sky-500 to-indigo-500',
 ];
 
+const BASE_PATH = '/ai-tools-directory';
+
 const priceLabel: Record<string, string> = {
   completely_free: '免费', open_source: '开源',
   freemium: '部分免费', paid: '付费', unknown: '未知',
@@ -41,7 +43,7 @@ export default function ToolsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/data/tools.json').then(r => r.json()).then((data: Tool[]) => {
+    fetch(`${BASE_PATH}/data/tools.json`).then(r => r.json()).then((data: Tool[]) => {
       data.sort((a, b) => b.date_added.localeCompare(a.date_added));
       setTools(data);
       setLoading(false);

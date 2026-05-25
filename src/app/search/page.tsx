@@ -4,6 +4,8 @@ import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 
+const BASE_PATH = '/ai-tools-directory';
+
 const catNames: Record<string, string> = {
   browser: '浏览器', image: '图像', code: '编程', voice: '语音',
   video: '视频', model: '大模型', office: '办公', ecommerce: '电商',
@@ -24,7 +26,7 @@ function SearchContent() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/data/tools.json')
+    fetch(`${BASE_PATH}/data/tools.json`)
       .then(r => r.json())
       .then((tools: Tool[]) => {
         setAllTools(tools);
