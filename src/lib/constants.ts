@@ -29,3 +29,30 @@ export const INDUSTRIES = [
   { id: 'ai-models', name: 'AI大模型', slug: 'ai-models', description: '底层大语言模型和多模态模型' },
   { id: 'local-offline', name: '本地/离线', slug: 'local-offline', description: '不需联网、本地运行的AI工具' },
 ];
+
+export const gradientColors = [
+  'from-blue-500 to-cyan-500',
+  'from-violet-500 to-purple-500',
+  'from-emerald-500 to-teal-500',
+  'from-rose-500 to-pink-500',
+  'from-amber-500 to-orange-500',
+  'from-sky-500 to-indigo-500',
+  'from-lime-500 to-green-500',
+  'from-fuchsia-500 to-rose-500',
+] as const;
+
+export const catNames: Record<string, string> = {
+  browser: '浏览器', image: '图像', code: '编程', voice: '语音',
+  video: '视频', model: '大模型', office: '办公', ecommerce: '电商',
+  design: '设计', other: '其他',
+};
+
+export const priceLabel: Record<string, string> = {
+  completely_free: '免费', open_source: '开源',
+  freemium: '部分免费', paid: '付费', unknown: '未知',
+};
+
+export const priceLabelFull: Record<string, string> = {
+  completely_free: '完全免费', open_source: '开源免费',
+  freemium: '免费+付费', paid: '付费', unknown: '未知',
+};

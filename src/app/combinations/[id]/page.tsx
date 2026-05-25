@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { ListChecks, ArrowLeft } from 'lucide-react';
 import { getCombinationById, getCombinations } from '@/lib/data';
+import Breadcrumb from '@/components/Breadcrumb';
 
 export async function generateStaticParams() {
   return getCombinations().map(c => ({ id: c.id }));
@@ -12,13 +14,11 @@ export default function CombinationDetailPage({ params }: any) {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6">
-        <Link href="/" className="hover:text-slate-300 transition-colors">首页</Link>
-        <span>/</span>
-        <Link href="/combinations" className="hover:text-slate-300 transition-colors">搭配方案</Link>
-        <span>/</span>
-        <span className="text-slate-300">{combo.title}</span>
-      </nav>
+      <Breadcrumb items={[
+        { label: '首页', href: '/' },
+        { label: '搭配方案', href: '/combinations' },
+        { label: combo.title },
+      ]} />
 
       <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 md:p-8 mb-8">
         <h1 className="text-3xl font-bold text-white mb-4">{combo.title}</h1>
@@ -35,7 +35,7 @@ export default function CombinationDetailPage({ params }: any) {
 
       <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 mb-8">
         <h2 className="flex items-center gap-2 text-lg font-semibold text-white mb-4">
-          <span className="w-7 h-7 rounded-lg bg-blue-500/20 flex items-center justify-center text-sm">📋</span>
+          <span className="icon-wrap-sm bg-blue-500/20 text-blue-400"><ListChecks className="w-3.5 h-3.5" /></span>
           方案说明
         </h2>
         <p className="text-slate-300 leading-relaxed whitespace-pre-wrap">{combo.description}</p>
@@ -48,7 +48,10 @@ export default function CombinationDetailPage({ params }: any) {
       )}
 
       <div className="text-center">
-        <Link href="/combinations" className="btn-ghost text-sm">← 返回搭配方案列表</Link>
+        <Link href="/combinations" className="btn-ghost text-sm">
+          <ArrowLeft className="w-3.5 h-3.5" />
+          返回搭配方案列表
+        </Link>
       </div>
     </div>
   );

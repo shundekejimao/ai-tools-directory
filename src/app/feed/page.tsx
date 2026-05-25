@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import { Radio, ArrowRight } from 'lucide-react';
 import { getChangelog, getTools } from '@/lib/data';
+import PageHeader from '@/components/PageHeader';
 
 export default function FeedPage() {
   const entries = getChangelog(30);
@@ -24,18 +26,12 @@ export default function FeedPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <div className="mb-8">
-        <div className="flex items-center gap-3 mb-3">
-          <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-sky-500 to-blue-500 flex items-center justify-center text-sm">📡</span>
-          <h1 className="text-3xl font-bold text-white">更新动态</h1>
-        </div>
-        <p className="text-slate-400">最近更新：{lastUpdated} · 每日自动刷新</p>
-      </div>
+      <PageHeader icon={Radio} title="更新动态" subtitle={`最近更新：${lastUpdated} · 每日自动刷新`} />
 
       {dates.length === 0 ? (
         <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-12 text-center text-slate-500">
-          <span className="text-4xl block mb-3">📡</span>
-          暂无更新记录。
+          <Radio className="w-12 h-12 mx-auto mb-4 text-slate-600" />
+          <p className="text-slate-400">暂无更新记录。</p>
         </div>
       ) : (
         <div className="space-y-8">
@@ -63,7 +59,10 @@ export default function FeedPage() {
       )}
 
       <div className="text-center mt-12">
-        <Link href="/tools" className="btn-primary">浏览全部工具</Link>
+        <Link href="/tools" className="btn-primary">
+          浏览全部工具
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
       </div>
     </div>
   );
