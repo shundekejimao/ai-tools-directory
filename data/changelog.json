@@ -257,19 +257,5 @@
     "entity_id": "tool-cohere-command-a",
     "change_desc": "收录工具：Cohere Command A+",
     "changed_at": "2026-05-25"
-  },
-  {
-    "id": 38,
-    "entity_type": "tool",
-    "entity_id": "tool-test-tool",
-    "change_desc": "收录工具：���Թ���",
-    "changed_at": "2026-05-25"
-  },
-  {
-    "id": 39,
-    "entity_type": "tool",
-    "entity_id": "tool-test-tool",
-    "change_desc": "删除工具：���Թ���",
-    "changed_at": "2026-05-25"
   }
 ]
