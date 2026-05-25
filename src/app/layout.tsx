@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1">{children}</main>
         <footer className="border-t border-slate-800/80 bg-slate-950/50 mt-16">
           <div className="max-w-7xl mx-auto px-4 py-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div>
                 <div className="flex items-center gap-2 mb-3">
                   <span className="w-7 h-7 rounded-md bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center text-xs font-bold text-white">AI</span>
@@ -71,6 +71,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <h4 className="text-sm font-semibold text-slate-300 mb-3">数据来源</h4>
                 <p className="text-sm text-slate-500 leading-relaxed">Product Hunt · GitHub Trending · Hugging Face · 量子位 · 机器之心</p>
                 <p className="text-xs text-slate-600 mt-3">每日自动更新 · 内容仅供参考</p>
+              </div>
+              <div>
+                <h4 className="text-sm font-semibold text-slate-300 mb-3">关注公众号</h4>
+                <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50">
+                  <img src="/ai-tools-directory/images/qrcode.jpg" alt="公众号二维码" className="w-28 h-28 object-cover rounded-lg mx-auto mb-2" />
+                  <p className="text-sm text-white text-center font-medium">顺德馋嘴猫</p>
+                  <p className="text-xs text-slate-500 text-center mt-0.5">微信扫一扫关注</p>
+                </div>
               </div>
             </div>
           </div>
