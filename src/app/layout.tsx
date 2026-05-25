@@ -86,7 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <img
                     src="/ai-tools-directory/images/qrcode.jpg"
                     alt="公众号二维码"
-                    className="w-24 h-24 rounded-xl flex-shrink-0 object-contain bg-white"
+                    className="w-36 h-36 rounded-xl flex-shrink-0 object-contain bg-white"
                   />
                   <div>
                     <p className="text-white font-medium text-sm">顺德馋嘴猫</p>
