@@ -49,7 +49,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </form>
           </div>
         </header>
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pb-16 md:pb-0">{children}</main>
+        
+        {/* 手机端底部导航 */}
+        <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden border-t border-white/[0.06] bg-[#08080d]/95 backdrop-blur-xl">
+          <div className="flex items-center justify-around h-14">
+            {navLinks.map(l => (
+              <Link key={l.href} href={l.href}
+                className="flex flex-col items-center justify-center gap-0.5 text-[10px] text-zinc-500 hover:text-white transition-colors py-1 px-2">
+                <l.icon className="w-4 h-4" />
+                {l.label}
+              </Link>
+            ))}
+          </div>
+        </nav>
+        
         <footer className="border-t border-white/[0.04] bg-black/30 mt-16">
           <div className="page-container py-12">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
