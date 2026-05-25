@@ -15,14 +15,15 @@
     "pricing_tier": "completely_free",
     "pricing_detail": "",
     "china_accessible": true,
-    "beginner_friendly": true,
+    "beginner_friendly": false,
     "ecommerce_relevant": false,
     "url": "https://github.com/browseros/browseros",
     "tags": [
       "开源",
       "免费",
       "浏览器",
-      "GitHub"
+      "GitHub",
+      "下载可能慢"
     ],
     "complementary_tools": [],
     "related_combinations": [],
@@ -68,11 +69,12 @@
     "pricing_tier": "open_source",
     "pricing_detail": "",
     "china_accessible": true,
-    "beginner_friendly": true,
+    "beginner_friendly": false,
     "ecommerce_relevant": false,
     "url": "https://github.com/anthropics/nla",
     "tags": [
-      "开源"
+      "开源",
+      "下载可能慢"
     ],
     "complementary_tools": [],
     "related_combinations": [],
@@ -225,11 +227,12 @@
     "pricing_tier": "open_source",
     "pricing_detail": "",
     "china_accessible": true,
-    "beginner_friendly": true,
+    "beginner_friendly": false,
     "ecommerce_relevant": true,
     "url": "https://github.com/Xiaomi/OmniVoice",
     "tags": [
-      "开源"
+      "开源",
+      "下载可能慢"
     ],
     "complementary_tools": [],
     "related_combinations": [],
@@ -304,12 +307,13 @@
     "pricing_tier": "open_source",
     "pricing_detail": "",
     "china_accessible": true,
-    "beginner_friendly": true,
+    "beginner_friendly": false,
     "ecommerce_relevant": true,
     "url": "https://www.supertone.ai",
     "tags": [
       "开源",
-      "本地运行"
+      "本地运行",
+      "下载可能慢"
     ],
     "complementary_tools": [],
     "related_combinations": [],
@@ -526,12 +530,13 @@
     "pricing_tier": "completely_free",
     "pricing_detail": "",
     "china_accessible": true,
-    "beginner_friendly": true,
+    "beginner_friendly": false,
     "ecommerce_relevant": false,
     "url": "https://github.com/openai/whisper",
     "tags": [
       "免费",
-      "浏览器"
+      "浏览器",
+      "下载可能慢"
     ],
     "complementary_tools": [],
     "related_combinations": [],
@@ -554,12 +559,13 @@
     "pricing_tier": "open_source",
     "pricing_detail": "",
     "china_accessible": true,
-    "beginner_friendly": true,
+    "beginner_friendly": false,
     "ecommerce_relevant": false,
     "url": "https://tinyhumans.ai/openhuman",
     "tags": [
       "开源",
-      "本地运行"
+      "本地运行",
+      "下载可能慢"
     ],
     "complementary_tools": [],
     "related_combinations": [],
@@ -582,11 +588,12 @@
     "pricing_tier": "freemium",
     "pricing_detail": "",
     "china_accessible": true,
-    "beginner_friendly": true,
+    "beginner_friendly": false,
     "ecommerce_relevant": false,
     "url": "https://github.com/OpenBMB/MiniCPM",
     "tags": [
-      "本地运行"
+      "本地运行",
+      "下载可能慢"
     ],
     "complementary_tools": [],
     "related_combinations": [],
@@ -607,12 +614,12 @@
     "shortcomings": "",
     "pricing_tier": "completely_free",
     "pricing_detail": "",
-    "china_accessible": true,
-    "beginner_friendly": true,
+    "china_accessible": false,
+    "beginner_friendly": false,
     "ecommerce_relevant": false,
     "url": "https://gemini.google.com",
     "tags": [
-      "免费"
+      "需梯子"
     ],
     "complementary_tools": [],
     "related_combinations": [],
@@ -699,49 +706,29 @@
     "slug": "stability-audio-3-0",
     "name": "Stability Audio 3.0",
     "category": "voice",
-    "description": "开源AI音乐生成，最长6分20秒完整歌曲",
-    "description_short": "开源AI音乐生成，最长6分20秒完整歌曲",
+    "description": "开源AI音乐生成，最长6分20秒完整歌曲，ComfyUI Day-0支持，Small版CPU可跑",
+    "description_short": "开源AI音乐生成，最长6分20秒完整歌曲，ComfyUI支持",
     "features": [
-      "开源AI音乐生成"
+      "开源AI音乐生成",
+      "最长6分20秒完整歌曲",
+      "ComfyUI Day-0原生支持",
+      "Small版CPU可跑"
     ],
     "shortcomings": "",
     "pricing_tier": "open_source",
     "pricing_detail": "",
     "china_accessible": true,
-    "beginner_friendly": true,
+    "beginner_friendly": false,
     "ecommerce_relevant": false,
     "url": "https://stability.ai",
     "tags": [
-      "开源"
+      "开源",
+      "下载可能慢"
     ],
     "complementary_tools": [],
     "related_combinations": [],
     "date_added": "2026-05-21",
     "date_updated": "2026-05-21"
-  },
-  {
-    "id": "tool-stable-audio-3-0-comfyui支持",
-    "slug": "stable-audio-3-0-comfyui支持",
-    "name": "Stable Audio 3.0 ComfyUI支持",
-    "category": "other",
-    "description": "Day-0原生支持，下载模板就能跑，CPU可跑Small版",
-    "description_short": "Day-0原生支持，下载模板就能跑，CPU可跑Small版",
-    "features": [
-      "Day-0原生支持",
-      "下载模板就能跑"
-    ],
-    "shortcomings": "",
-    "pricing_tier": "freemium",
-    "pricing_detail": "",
-    "china_accessible": true,
-    "beginner_friendly": true,
-    "ecommerce_relevant": false,
-    "url": "https://stability.ai",
-    "tags": [],
-    "complementary_tools": [],
-    "related_combinations": [],
-    "date_added": "2026-05-22",
-    "date_updated": "2026-05-22"
   },
   {
     "id": "tool-chatgpt-for-powerpoint",
@@ -789,7 +776,9 @@
     "beginner_friendly": true,
     "ecommerce_relevant": false,
     "url": "https://cursor.com",
-    "tags": [],
+    "tags": [
+      "部分需梯子"
+    ],
     "complementary_tools": [],
     "related_combinations": [],
     "date_added": "2026-05-23",
@@ -827,7 +816,7 @@
     "id": "tool-腾讯marvis马维斯",
     "slug": "腾讯marvis马维斯",
     "name": "腾讯Marvis马维斯",
-    "category": "model",
+    "category": "office",
     "description": "操作系统级AI助手，6大Agent并行，每天1000万Token免费",
     "description_short": "操作系统级AI助手，6大Agent并行，每天1000万Token免费",
     "features": [
@@ -843,7 +832,8 @@
     "ecommerce_relevant": false,
     "url": "https://marvis.qq.com",
     "tags": [
-      "免费"
+      "免费",
+      "国产"
     ],
     "complementary_tools": [],
     "related_combinations": [],
@@ -864,11 +854,12 @@
     "pricing_tier": "open_source",
     "pricing_detail": "",
     "china_accessible": true,
-    "beginner_friendly": true,
+    "beginner_friendly": false,
     "ecommerce_relevant": false,
     "url": "https://github.com/bytedance/Lance",
     "tags": [
-      "开源"
+      "开源",
+      "下载可能慢"
     ],
     "complementary_tools": [],
     "related_combinations": [],
@@ -917,11 +908,13 @@
     "shortcomings": "",
     "pricing_tier": "freemium",
     "pricing_detail": "",
-    "china_accessible": true,
+    "china_accessible": false,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
     "url": "https://runwayml.com",
-    "tags": [],
+    "tags": [
+      "需梯子"
+    ],
     "complementary_tools": [],
     "related_combinations": [],
     "date_added": "2026-05-25",
@@ -940,12 +933,13 @@
     "shortcomings": "",
     "pricing_tier": "open_source",
     "pricing_detail": "",
-    "china_accessible": true,
-    "beginner_friendly": true,
+    "china_accessible": false,
+    "beginner_friendly": false,
     "ecommerce_relevant": false,
     "url": "https://dashboard.cohere.com",
     "tags": [
-      "开源"
+      "开源",
+      "需梯子"
     ],
     "complementary_tools": [],
     "related_combinations": [],
