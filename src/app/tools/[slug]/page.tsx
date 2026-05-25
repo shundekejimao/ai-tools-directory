@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getToolBySlug, getComplementaryTools, getCombinations } from '@/lib/data';
+import { getToolBySlug, getComplementaryTools, getCombinations, getTools } from '@/lib/data';
+
+export async function generateStaticParams() {
+  return getTools().map(t => ({ slug: t.slug }));
+}
 
 export default function ToolDetailPage({ params }: any) {
   const tool = getToolBySlug(params.slug);

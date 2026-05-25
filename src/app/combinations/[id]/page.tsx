@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getCombinationById } from '@/lib/data';
+import { getCombinationById, getCombinations } from '@/lib/data';
+
+export async function generateStaticParams() {
+  return getCombinations().map(c => ({ id: c.id }));
+}
 
 export default function CombinationDetailPage({ params }: any) {
   const combo = getCombinationById(params.id);

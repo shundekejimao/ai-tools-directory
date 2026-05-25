@@ -1,9 +1,46 @@
-import Link from 'next/link';
-import { searchTools } from '@/lib/data';
+'use client';
 
-export default function SearchPage({ searchParams }: any) {
-  const query = searchParams.q || '';
-  const results = query ? searchTools(query) : [];
+import { Suspense, useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useSearchParams, useRouter } from 'next/navigation';
+
+interface Tool {
+  id: string; slug: string; name: string; category: string;
+  description_short?: string; tags: string[];
+}
+
+function SearchContent() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const query = searchParams.get('q') || '';
+  const [allTools, setAllTools] = useState<Tool[]>([]);
+  const [results, setResults] = useState<Tool[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/data/tools.json')
+      .then(r => r.json())
+      .then((tools: Tool[]) => {
+        setAllTools(tools);
+        if (query) {
+          const q = query.toLowerCase();
+          setResults(tools.filter(t =>
+            t.name.toLowerCase().includes(q) ||
+            (t.description_short || '').toLowerCase().includes(q) ||
+            t.tags.some(tag => tag.toLowerCase().includes(q)) ||
+            t.category.toLowerCase().includes(q)
+          ));
+        }
+        setLoading(false);
+      });
+  }, [query]);
+
+  function handleSearch(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const q = (form.get('q') as string) || '';
+    router.push(`/search?q=${encodeURIComponent(q)}`);
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -11,7 +48,7 @@ export default function SearchPage({ searchParams }: any) {
         {query ? `搜索"${query}"的结果 (${results.length})` : '搜索AI工具'}
       </h1>
 
-      <form action="/search" method="GET" className="mb-8">
+      <form onSubmit={handleSearch} className="mb-8">
         <div className="flex gap-3 max-w-xl">
           <input
             name="q"
@@ -24,7 +61,9 @@ export default function SearchPage({ searchParams }: any) {
         </div>
       </form>
 
-      {query && results.length === 0 && (
+      {loading && <div className="text-slate-500">加载中...</div>}
+
+      {!loading && query && results.length === 0 && (
         <div className="card text-center text-slate-500 py-12">
           未找到与 &ldquo;{query}&rdquo; 相关的工具，试试其他关键词。
         </div>
@@ -45,5 +84,13 @@ export default function SearchPage({ searchParams }: any) {
         ))}
       </div>
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div className="max-w-7xl mx-auto px-4 py-8 text-slate-500">加载中...</div>}>
+      <SearchContent />
+    </Suspense>
   );
 }

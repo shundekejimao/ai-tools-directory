@@ -19,3 +19,5 @@ Thumbs.db
 .DS_Store
 
 # Data files ARE committed — they are the site's content store
+
+.vercel

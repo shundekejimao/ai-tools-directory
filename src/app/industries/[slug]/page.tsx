@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getIndustryBySlug, getToolsByIndustry } from '@/lib/data';
+import { getIndustryBySlug, getToolsByIndustry, getIndustries } from '@/lib/data';
+
+export async function generateStaticParams() {
+  return getIndustries().map(i => ({ slug: i.slug }));
+}
 
 export default function IndustryDetailPage({ params }: any) {
   const industry = getIndustryBySlug(params.slug);

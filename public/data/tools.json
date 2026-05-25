@@ -1,0 +1,968 @@
+[
+  {
+    "id": "tool-browseros",
+    "slug": "browseros",
+    "name": "BrowserOS",
+    "category": "office",
+    "description": "免费开源AI浏览器，内置Kimi，GitHub星标破万。AI帮你浏览网页、搜索、填表、抓数据",
+    "description_short": "免费开源AI浏览器，内置Kimi，GitHub星标破万。AI帮你浏览网页、搜索、填表、抓数据",
+    "features": [
+      "免费开源AI浏览器",
+      "内置Kimi",
+      "GitHub星标破万。AI帮你浏览网页"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "completely_free",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "开源",
+      "免费",
+      "浏览器",
+      "GitHub"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-13",
+    "date_updated": "2026-05-13"
+  },
+  {
+    "id": "tool-coze扣子图像流",
+    "slug": "coze扣子图像流",
+    "name": "Coze扣子图像流",
+    "category": "design",
+    "description": "扣子V2.0.4新增，文生图+智能修图+批量出图，电商产品图批量生成",
+    "description_short": "扣子V2.0.4新增，文生图+智能修图+批量出图，电商产品图批量生成",
+    "features": [
+      "扣子V2.0.4新增",
+      "文生图+智能修图+批量出图",
+      "电商产品图批量生成"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": true,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-13",
+    "date_updated": "2026-05-13"
+  },
+  {
+    "id": "tool-anthropic-nla",
+    "slug": "anthropic-nla",
+    "name": "Anthropic NLA",
+    "category": "other",
+    "description": "开源\"读懂AI内心\"工具，实验发现Claude有时\"知道但不说\"5月14日（3个工具）",
+    "description_short": "开源\"读懂AI内心\"工具，实验发现Claude有时\"知道但不说\"5月14日（3个工具）",
+    "features": [
+      "开源\"读懂AI内心\"工具",
+      "实验发现Claude有时\"知道但不说\"5月14日（3个工具）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "open_source",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "开源"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-13",
+    "date_updated": "2026-05-13"
+  },
+  {
+    "id": "tool-百度秒哒3-0",
+    "slug": "百度秒哒3-0",
+    "name": "百度秒哒3.0",
+    "category": "code",
+    "description": "国内首款AI应用开发APP，说句话生成可用APP，安卓已上线",
+    "description_short": "国内首款AI应用开发APP，说句话生成可用APP，安卓已上线",
+    "features": [
+      "国内首款AI应用开发APP",
+      "说句话生成可用APP",
+      "安卓已上线"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "国产"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-14",
+    "date_updated": "2026-05-14"
+  },
+  {
+    "id": "tool-文心5-1-ernie-5-1",
+    "slug": "文心5-1-ernie-5-1",
+    "name": "文心5.1（ERNIE 5.1）",
+    "category": "model",
+    "description": "百度新一代大模型，搜索能力国内第一全球第四，训练成本仅为同行6%",
+    "description_short": "百度新一代大模型，搜索能力国内第一全球第四，训练成本仅为同行6%",
+    "features": [
+      "百度新一代大模型",
+      "搜索能力国内第一全球第四",
+      "训练成本仅为同行6%"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "国产"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-14",
+    "date_updated": "2026-05-14"
+  },
+  {
+    "id": "tool-百度dumate",
+    "slug": "百度dumate",
+    "name": "百度DuMate",
+    "category": "office",
+    "description": "百度通用智能体，像数字员工自动帮你干活，每日1000免费点数5月15日（3个工具，DuMate/秒哒有更新信息）",
+    "description_short": "百度通用智能体，像数字员工自动帮你干活，每日1000免费点数5月15日（3个工具，DuMate/秒哒有更新信息）",
+    "features": [
+      "百度通用智能体",
+      "像数字员工自动帮你干活",
+      "每日1000免费点数5月15日（3个工具",
+      "DuMate/秒哒有更新信息）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "免费"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-14",
+    "date_updated": "2026-05-14"
+  },
+  {
+    "id": "tool-deepseek识图模式",
+    "slug": "deepseek识图模式",
+    "name": "DeepSeek识图模式",
+    "category": "design",
+    "description": "灰度开放，上传图片秒懂，处理一张图仅消耗约90个tokens",
+    "description_short": "灰度开放，上传图片秒懂，处理一张图仅消耗约90个tokens",
+    "features": [
+      "灰度开放",
+      "上传图片秒懂",
+      "处理一张图仅消耗约90个tokens"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-15",
+    "date_updated": "2026-05-15"
+  },
+  {
+    "id": "tool-阿里万小智2-0",
+    "slug": "阿里万小智2-0",
+    "name": "阿里万小智2.0",
+    "category": "other",
+    "description": "AI建站平台，新用户2000灵感值免费5月16日（4个工具，DuMate/秒哒/DeepSeek有更新信息）",
+    "description_short": "AI建站平台，新用户2000灵感值免费5月16日（4个工具，DuMate/秒哒/DeepSeek有更新信息）",
+    "features": [
+      "AI建站平台",
+      "新用户2000灵感值免费5月16日（4个工具",
+      "DuMate/秒哒/DeepSeek有更新信息）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "免费"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-15",
+    "date_updated": "2026-05-15"
+  },
+  {
+    "id": "tool-小米omnivoice",
+    "slug": "小米omnivoice",
+    "name": "小米OmniVoice",
+    "category": "voice",
+    "description": "开源语音克隆模型，3秒复制声音，支持600+语言含方言",
+    "description_short": "开源语音克隆模型，3秒复制声音，支持600+语言含方言",
+    "features": [
+      "开源语音克隆模型",
+      "3秒复制声音",
+      "支持600+语言含方言"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "open_source",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "开源"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-16",
+    "date_updated": "2026-05-16"
+  },
+  {
+    "id": "tool-deepseek-v4-flash",
+    "slug": "deepseek-v4-flash",
+    "name": "DeepSeek V4 Flash",
+    "category": "model",
+    "description": "284亿参数轻量版，100万Token上下文，免费使用5月17日（3个工具）",
+    "description_short": "284亿参数轻量版，100万Token上下文，免费使用5月17日（3个工具）",
+    "features": [
+      "284亿参数轻量版",
+      "100万Token上下文",
+      "免费使用5月17日（3个工具）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "completely_free",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "免费"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-16",
+    "date_updated": "2026-05-16"
+  },
+  {
+    "id": "tool-千问ai购物助手",
+    "slug": "千问ai购物助手",
+    "name": "千问AI购物助手",
+    "category": "ecommerce",
+    "description": "千问×淘宝打通，说句话从40亿商品里找货，AI算优惠+AI试穿",
+    "description_short": "千问×淘宝打通，说句话从40亿商品里找货，AI算优惠+AI试穿",
+    "features": [
+      "千问×淘宝打通",
+      "说句话从40亿商品里找货",
+      "AI算优惠+AI试穿"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-17",
+    "date_updated": "2026-05-17"
+  },
+  {
+    "id": "tool-supertonic-v3",
+    "slug": "supertonic-v3",
+    "name": "Supertonic v3",
+    "category": "voice",
+    "description": "开源TTS，99M参数手机本地跑，31种语言，不联网也能用",
+    "description_short": "开源TTS，99M参数手机本地跑，31种语言，不联网也能用",
+    "features": [
+      "开源TTS",
+      "99M参数手机本地跑",
+      "31种语言",
+      "不联网也能用"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "open_source",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "开源",
+      "本地运行"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-17",
+    "date_updated": "2026-05-17"
+  },
+  {
+    "id": "tool-notion开发者平台",
+    "slug": "notion开发者平台",
+    "name": "Notion开发者平台",
+    "category": "code",
+    "description": "从笔记工具升级成AI Agent工作台5月18日（5个工具）",
+    "description_short": "从笔记工具升级成AI Agent工作台5月18日（5个工具）",
+    "features": [
+      "从笔记工具升级成AI Agent工作台5月18日（5个工具）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-17",
+    "date_updated": "2026-05-17"
+  },
+  {
+    "id": "tool-微信ai头像-ai歌曲",
+    "slug": "微信ai头像-ai歌曲",
+    "name": "微信AI头像+AI歌曲",
+    "category": "design",
+    "description": "微信里直接AI生成头像和写歌，零门槛免费",
+    "description_short": "微信里直接AI生成头像和写歌，零门槛免费",
+    "features": [
+      "微信里直接AI生成头像和写歌",
+      "零门槛免费"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "completely_free",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "免费"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-18",
+    "date_updated": "2026-05-18"
+  },
+  {
+    "id": "tool-阿里qoder-1-0",
+    "slug": "阿里qoder-1-0",
+    "name": "阿里Qoder 1.0",
+    "category": "code",
+    "description": "AI编程工具，免费版支持Quest模式（AI自主全栈开发）",
+    "description_short": "AI编程工具，免费版支持Quest模式（AI自主全栈开发）",
+    "features": [
+      "AI编程工具",
+      "免费版支持Quest模式（AI自主全栈开发）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "免费"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-18",
+    "date_updated": "2026-05-18"
+  },
+  {
+    "id": "tool-kimi-webbridge",
+    "slug": "kimi-webbridge",
+    "name": "Kimi WebBridge",
+    "category": "office",
+    "description": "浏览器AI Agent扩展，让AI像人一样操作网页",
+    "description_short": "浏览器AI Agent扩展，让AI像人一样操作网页",
+    "features": [
+      "浏览器AI Agent扩展",
+      "让AI像人一样操作网页"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "浏览器"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-18",
+    "date_updated": "2026-05-18"
+  },
+  {
+    "id": "tool-glm-5v-turbo",
+    "slug": "glm-5v-turbo",
+    "name": "GLM-5V-Turbo",
+    "category": "design",
+    "description": "智谱多模态编程模型，看设计稿直接生成代码，94.8分碾压Claude",
+    "description_short": "智谱多模态编程模型，看设计稿直接生成代码，94.8分碾压Claude",
+    "features": [
+      "智谱多模态编程模型",
+      "看设计稿直接生成代码",
+      "94.8分碾压Claude"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-18",
+    "date_updated": "2026-05-18"
+  },
+  {
+    "id": "tool-微信8-0-73",
+    "slug": "微信8-0-73",
+    "name": "微信8.0.73",
+    "category": "other",
+    "description": "隐藏来电+隔空传送+元宝聊天5月19日（3个工具）",
+    "description_short": "隐藏来电+隔空传送+元宝聊天5月19日（3个工具）",
+    "features": [
+      "隐藏来电+隔空传送+元宝聊天5月19日（3个工具）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-18",
+    "date_updated": "2026-05-18"
+  },
+  {
+    "id": "tool-腾讯ardot",
+    "slug": "腾讯ardot",
+    "name": "腾讯Ardot",
+    "category": "design",
+    "description": "AI设计智能体，一句话生成可编辑设计稿+一键转代码",
+    "description_short": "AI设计智能体，一句话生成可编辑设计稿+一键转代码",
+    "features": [
+      "AI设计智能体",
+      "一句话生成可编辑设计稿+一键转代码"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-19",
+    "date_updated": "2026-05-19"
+  },
+  {
+    "id": "tool-阿里qoderwork设计工作台",
+    "slug": "阿里qoderwork设计工作台",
+    "name": "阿里QoderWork设计工作台",
+    "category": "design",
+    "description": "语音描述出专业设计",
+    "description_short": "语音描述出专业设计",
+    "features": [
+      "语音描述出专业设计"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-19",
+    "date_updated": "2026-05-19"
+  },
+  {
+    "id": "tool-whisper-web",
+    "slug": "whisper-web",
+    "name": "Whisper Web",
+    "category": "code",
+    "description": "浏览器端免费音频转文字，支持100+语言5月20日（5个工具，Ardot/QoderWork有更新信息）",
+    "description_short": "浏览器端免费音频转文字，支持100+语言5月20日（5个工具，Ardot/QoderWork有更新信息）",
+    "features": [
+      "浏览器端免费音频转文字",
+      "支持100+语言5月20日（5个工具",
+      "Ardot/QoderWork有更新信息）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "completely_free",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "免费",
+      "浏览器"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-19",
+    "date_updated": "2026-05-19"
+  },
+  {
+    "id": "tool-openhuman",
+    "slug": "openhuman",
+    "name": "OpenHuman",
+    "category": "other",
+    "description": "开源个人AI超级助手，一键连接118+应用，数据全存本地",
+    "description_short": "开源个人AI超级助手，一键连接118+应用，数据全存本地",
+    "features": [
+      "开源个人AI超级助手",
+      "一键连接118+应用",
+      "数据全存本地"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "open_source",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "开源",
+      "本地运行"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-20",
+    "date_updated": "2026-05-20"
+  },
+  {
+    "id": "tool-minicpm-v-4-6",
+    "slug": "minicpm-v-4-6",
+    "name": "MiniCPM-V 4.6",
+    "category": "model",
+    "description": "1.3B参数端侧多模态AI，手机本地跑，离线可用",
+    "description_short": "1.3B参数端侧多模态AI，手机本地跑，离线可用",
+    "features": [
+      "1.3B参数端侧多模态AI",
+      "手机本地跑",
+      "离线可用"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "本地运行"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-20",
+    "date_updated": "2026-05-20"
+  },
+  {
+    "id": "tool-gemini-3-5-flash",
+    "slug": "gemini-3-5-flash",
+    "name": "Gemini 3.5 Flash",
+    "category": "model",
+    "description": "谷歌最强免费AI模型，速度4倍于竞品，100万Token上下文5月21日（4个工具）",
+    "description_short": "谷歌最强免费AI模型，速度4倍于竞品，100万Token上下文5月21日（4个工具）",
+    "features": [
+      "谷歌最强免费AI模型",
+      "速度4倍于竞品",
+      "100万Token上下文5月21日（4个工具）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "completely_free",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "免费"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-20",
+    "date_updated": "2026-05-20"
+  },
+  {
+    "id": "tool-阿里千问云",
+    "slug": "阿里千问云",
+    "name": "阿里千问云",
+    "category": "code",
+    "description": "150+模型API一站式接入，零代码让Agent自动调用不同模型",
+    "description_short": "150+模型API一站式接入，零代码让Agent自动调用不同模型",
+    "features": [
+      "150+模型API一站式接入",
+      "零代码让Agent自动调用不同模型"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-21",
+    "date_updated": "2026-05-21"
+  },
+  {
+    "id": "tool-中国移动词元套餐",
+    "slug": "中国移动词元套餐",
+    "name": "中国移动词元套餐",
+    "category": "model",
+    "description": "每月5元用300+AI模型，运营商把AI当流量卖",
+    "description_short": "每月5元用300+AI模型，运营商把AI当流量卖",
+    "features": [
+      "每月5元用300+AI模型",
+      "运营商把AI当流量卖"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-21",
+    "date_updated": "2026-05-21"
+  },
+  {
+    "id": "tool-qwen3-7-max",
+    "slug": "qwen3-7-max",
+    "name": "Qwen3.7-Max",
+    "category": "model",
+    "description": "国产最强智能体模型，Arena全球盲测国产第一，自主连续工作35小时",
+    "description_short": "国产最强智能体模型，Arena全球盲测国产第一，自主连续工作35小时",
+    "features": [
+      "国产最强智能体模型",
+      "Arena全球盲测国产第一",
+      "自主连续工作35小时"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "国产"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-21",
+    "date_updated": "2026-05-21"
+  },
+  {
+    "id": "tool-stability-audio-3-0",
+    "slug": "stability-audio-3-0",
+    "name": "Stability Audio 3.0",
+    "category": "voice",
+    "description": "开源AI音乐生成，最长6分20秒完整歌曲5月22日（2个工具，Stable Audio有更新）",
+    "description_short": "开源AI音乐生成，最长6分20秒完整歌曲5月22日（2个工具，Stable Audio有更新）",
+    "features": [
+      "开源AI音乐生成",
+      "最长6分20秒完整歌曲5月22日（2个工具",
+      "Stable Audio有更新）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "open_source",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "开源"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-21",
+    "date_updated": "2026-05-21"
+  },
+  {
+    "id": "tool-stable-audio-3-0-comfyui支持",
+    "slug": "stable-audio-3-0-comfyui支持",
+    "name": "Stable Audio 3.0 ComfyUI支持",
+    "category": "other",
+    "description": "Day-0原生支持，下载模板就能跑，CPU可跑Small版5月23日（2个工具）",
+    "description_short": "Day-0原生支持，下载模板就能跑，CPU可跑Small版5月23日（2个工具）",
+    "features": [
+      "Day-0原生支持",
+      "下载模板就能跑",
+      "CPU可跑Small版5月23日（2个工具）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-22",
+    "date_updated": "2026-05-22"
+  },
+  {
+    "id": "tool-chatgpt-for-powerpoint",
+    "slug": "chatgpt-for-powerpoint",
+    "name": "ChatGPT for PowerPoint",
+    "category": "design",
+    "description": "OpenAI官方PPT插件，说人话就能做PPT，免费用户可用",
+    "description_short": "OpenAI官方PPT插件，说人话就能做PPT，免费用户可用",
+    "features": [
+      "OpenAI官方PPT插件",
+      "说人话就能做PPT",
+      "免费用户可用"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "completely_free",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "免费"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-23",
+    "date_updated": "2026-05-23"
+  },
+  {
+    "id": "tool-cursor-composer-2-5",
+    "slug": "cursor-composer-2-5",
+    "name": "Cursor Composer 2.5",
+    "category": "code",
+    "description": "自研编码模型，编程能力只差Claude 0.3%，价格1/10 5月24日（3个工具）",
+    "description_short": "自研编码模型，编程能力只差Claude 0.3%，价格1/10 5月24日（3个工具）",
+    "features": [
+      "自研编码模型",
+      "编程能力只差Claude 0.3%",
+      "价格1/10 5月24日（3个工具）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-23",
+    "date_updated": "2026-05-23"
+  },
+  {
+    "id": "tool-chatgpt-ai填表",
+    "slug": "chatgpt-ai填表",
+    "name": "ChatGPT AI填表",
+    "category": "design",
+    "description": "上传表单图片+语音说内容，AI自动识别字段填写，免费版可用",
+    "description_short": "上传表单图片+语音说内容，AI自动识别字段填写，免费版可用",
+    "features": [
+      "上传表单图片+语音说内容",
+      "AI自动识别字段填写",
+      "免费版可用"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "免费"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-24",
+    "date_updated": "2026-05-24"
+  },
+  {
+    "id": "tool-腾讯marvis马维斯",
+    "slug": "腾讯marvis马维斯",
+    "name": "腾讯Marvis马维斯",
+    "category": "model",
+    "description": "操作系统级AI助手，6大Agent并行，每天1000万Token免费",
+    "description_short": "操作系统级AI助手，6大Agent并行，每天1000万Token免费",
+    "features": [
+      "操作系统级AI助手",
+      "6大Agent并行",
+      "每天1000万Token免费"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "completely_free",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "免费"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-24",
+    "date_updated": "2026-05-24"
+  },
+  {
+    "id": "tool-字节lance",
+    "slug": "字节lance",
+    "name": "字节Lance",
+    "category": "model",
+    "description": "开源3B多模态模型，消费级显卡就能跑5月25日（5个工具，Marvis/ChatGPT填表有更新信息）",
+    "description_short": "开源3B多模态模型，消费级显卡就能跑5月25日（5个工具，Marvis/ChatGPT填表有更新信息）",
+    "features": [
+      "开源3B多模态模型",
+      "消费级显卡就能跑5月25日（5个工具",
+      "Marvis/ChatGPT填表有更新信息）"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "open_source",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "开源"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-24",
+    "date_updated": "2026-05-24"
+  },
+  {
+    "id": "tool-椒图ai",
+    "slug": "椒图ai",
+    "name": "椒图AI",
+    "category": "design",
+    "description": "中文原生AI修图平台，说中文就能P图，基础免费",
+    "description_short": "中文原生AI修图平台，说中文就能P图，基础免费",
+    "features": [
+      "中文原生AI修图平台",
+      "说中文就能P图",
+      "基础免费"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "免费",
+      "国产"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-25",
+    "date_updated": "2026-05-25"
+  },
+  {
+    "id": "tool-runway-agent",
+    "slug": "runway-agent",
+    "name": "Runway Agent",
+    "category": "video",
+    "description": "对话式AI视频制作，说需求出成片",
+    "description_short": "对话式AI视频制作，说需求出成片",
+    "features": [
+      "对话式AI视频制作",
+      "说需求出成片"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-25",
+    "date_updated": "2026-05-25"
+  },
+  {
+    "id": "tool-cohere-command-a",
+    "slug": "cohere-command-a",
+    "name": "Cohere Command A+",
+    "category": "model",
+    "description": "Transformer联创开源2180亿参数企业级模型",
+    "description_short": "Transformer联创开源2180亿参数企业级模型",
+    "features": [
+      "Transformer联创开源2180亿参数企业级模型"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "open_source",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "",
+    "tags": [
+      "开源"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-25",
+    "date_updated": "2026-05-25"
+  }
+]
