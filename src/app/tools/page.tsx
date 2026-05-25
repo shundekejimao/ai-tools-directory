@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const gradientColors = [
@@ -34,6 +35,7 @@ interface Tool {
 }
 
 export default function ToolsPage() {
+  const router = useRouter();
   const [tools, setTools] = useState<Tool[]>([]);
   const [activeCat, setActiveCat] = useState('全部');
   const [loading, setLoading] = useState(true);
@@ -78,8 +80,8 @@ export default function ToolsPage() {
       {/* Tool grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtered.map((tool, i) => (
-          <Link key={tool.id} href={`/tools/${tool.slug}`}
-            className="group bg-slate-900/60 border border-slate-800 rounded-2xl p-5
+          <div key={tool.id} onClick={() => router.push(`/tools/${tool.slug}`)}
+            className="group bg-slate-900/60 border border-slate-800 rounded-2xl p-5 cursor-pointer
                        hover:border-slate-600 hover:bg-slate-900/80 transition-all duration-300">
             <div className="flex items-start gap-3 mb-3">
               <span className={`w-10 h-10 rounded-xl bg-gradient-to-br ${gradientColors[i % gradientColors.length]} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
@@ -111,7 +113,7 @@ export default function ToolsPage() {
               {tool.beginner_friendly && <span className="badge-blue text-[10px]">小白友好</span>}
               {tool.ecommerce_relevant && <span className="badge-purple text-[10px]">电商</span>}
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
