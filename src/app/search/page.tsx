@@ -17,7 +17,7 @@ function SkeletonResults() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {[...Array(6)].map((_, i) => (
-        <div key={i} className="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 space-y-3">
+        <div key={i} className="bg-white/[0.02] border border-white/[0.04] rounded-2xl p-5 space-y-3">
           <div className="skeleton h-5 w-32" />
           <div className="skeleton h-4 w-full" />
           <div className="skeleton h-4 w-3/4" />
@@ -61,7 +61,7 @@ function SearchContent() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 animate-fade-in">
+    <div className="page-container py-8 animate-fade-in">
       <h1 className="text-2xl font-bold text-white mb-6">
         {query ? `搜索"${query}"的结果 (${results.length})` : '搜索AI工具'}
       </h1>
@@ -69,13 +69,15 @@ function SearchContent() {
       <form onSubmit={handleSearch} className="mb-8">
         <div className="flex gap-3 max-w-xl">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
             <input
               name="q"
               type="search"
               defaultValue={query}
               placeholder="输入关键词搜索AI工具..."
-              className="w-full bg-slate-800 border border-slate-600 rounded-xl pl-10 pr-4 py-2.5 text-slate-200 focus:outline-none focus:border-blue-500 placeholder-slate-500"
+              className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl pl-10 pr-4 py-2.5
+                         text-zinc-200 placeholder-zinc-600
+                         focus:outline-none focus:border-white/[0.15] focus:bg-white/[0.05] transition-all"
             />
           </div>
           <button type="submit" className="btn-primary">搜索</button>
@@ -85,24 +87,24 @@ function SearchContent() {
       {loading && <SkeletonResults />}
 
       {!loading && query && results.length === 0 && (
-        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-12 text-center text-slate-500">
-          <Search className="w-12 h-12 mx-auto mb-4 text-slate-600" />
-          <p className="text-slate-400">未找到与 &ldquo;{query}&rdquo; 相关的工具，试试其他关键词。</p>
+        <div className="bg-white/[0.02] border border-white/[0.04] rounded-2xl p-12 text-center">
+          <Search className="w-12 h-12 mx-auto mb-4 text-zinc-600" />
+          <p className="text-zinc-400">未找到与 &ldquo;{query}&rdquo; 相关的工具，试试其他关键词。</p>
         </div>
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {results.map(tool => (
           <Link key={tool.id} href={`/tools/${tool.slug}`}
-            className="group bg-slate-900/60 border border-slate-800 rounded-2xl p-5
-                       hover:border-slate-600 hover:bg-slate-900/80 hover:-translate-y-0.5
-                       hover:shadow-xl hover:shadow-black/10 transition-all duration-300">
+            className="group bg-white/[0.02] border border-white/[0.04] rounded-2xl p-5
+                       hover:border-white/[0.1] hover:bg-white/[0.04] hover:-translate-y-0.5
+                       transition-all duration-300">
             <h2 className="font-medium text-white group-hover:text-blue-400 transition-colors">{tool.name}</h2>
-            <p className="text-sm text-slate-400 mt-1 line-clamp-2">{tool.description_short}</p>
+            <p className="text-sm text-zinc-400 mt-1 line-clamp-2">{tool.description_short}</p>
             <div className="flex gap-1.5 mt-3 flex-wrap">
-              <span className="text-xs bg-slate-700 text-slate-400 px-2 py-0.5 rounded">{catNames[tool.category] || tool.category}</span>
+              <span className="text-xs bg-white/[0.04] text-zinc-400 px-2 py-0.5 rounded border border-white/[0.05]">{catNames[tool.category] || tool.category}</span>
               {tool.tags.slice(0, 2).map(tag => (
-                <span key={tag} className="text-xs bg-slate-700 text-slate-400 px-2 py-0.5 rounded">{tag}</span>
+                <span key={tag} className="text-xs bg-white/[0.04] text-zinc-400 px-2 py-0.5 rounded border border-white/[0.05]">{tag}</span>
               ))}
             </div>
           </Link>
@@ -115,15 +117,17 @@ function SearchContent() {
 export default function SearchPage() {
   return (
     <Suspense fallback={
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="page-container py-8">
         <h1 className="text-2xl font-bold text-white mb-6">搜索AI工具</h1>
         <div className="flex gap-3 max-w-xl mb-8">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
             <input
               type="search"
               placeholder="输入关键词搜索AI工具..."
-              className="w-full bg-slate-800 border border-slate-600 rounded-xl pl-10 pr-4 py-2.5 text-slate-200 focus:outline-none focus:border-blue-500 placeholder-slate-500"
+              className="w-full bg-white/[0.03] border border-white/[0.06] rounded-xl pl-10 pr-4 py-2.5
+                         text-zinc-200 placeholder-zinc-600
+                         focus:outline-none focus:border-white/[0.15] transition-all"
             />
           </div>
           <button type="submit" className="btn-primary">搜索</button>

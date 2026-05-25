@@ -3,33 +3,40 @@ import { Link2, Clock, DollarSign, Package } from 'lucide-react';
 import { getCombinations } from '@/lib/data';
 import PageHeader from '@/components/PageHeader';
 
-const emojis = ['⚡','🎯','💡','🔮','🚀','✨','🔥','💎'];
+const accentColors = [
+  'from-blue-500 to-cyan-500', 'from-violet-500 to-purple-500',
+  'from-emerald-500 to-teal-500', 'from-rose-500 to-pink-500',
+  'from-amber-500 to-orange-500', 'from-sky-500 to-indigo-500',
+  'from-fuchsia-500 to-pink-500', 'from-teal-500 to-green-500',
+];
 
 export default function CombinationsPage() {
   const combos = getCombinations();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="page-container py-8">
       <PageHeader icon={Link2} title="最佳搭配方案" subtitle="多个 AI 工具组合使用，取长补短，效果翻倍" />
 
       {combos.length === 0 ? (
-        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-12 text-center text-slate-500">
-          <Package className="w-12 h-12 mx-auto mb-4 text-slate-600" />
-          <p className="text-slate-400">搭配方案整理中，敬请期待。</p>
+        <div className="bg-white/[0.02] border border-white/[0.04] rounded-2xl p-12 text-center">
+          <Package className="w-12 h-12 mx-auto mb-4 text-zinc-600" />
+          <p className="text-zinc-400">搭配方案整理中，敬请期待。</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {combos.map((combo, i) => (
             <Link key={combo.id} href={`/combinations/${combo.id}`}
-              className="group bg-slate-900/60 border border-slate-800 rounded-2xl p-6
-                         hover:border-amber-800/50 hover:bg-slate-900/80 hover:-translate-y-0.5
-                         hover:shadow-xl hover:shadow-black/10 transition-all duration-300">
+              className="group bg-white/[0.02] border border-white/[0.04] rounded-2xl p-6
+                         hover:border-blue-500/20 hover:bg-white/[0.04] hover:-translate-y-0.5
+                         transition-all duration-300">
               <div className="flex gap-4 items-start">
-                <span className="text-3xl">{emojis[i]}</span>
+                <span className={`w-11 h-11 rounded-xl bg-gradient-to-br ${accentColors[i % accentColors.length]} flex items-center justify-center text-white text-lg font-bold flex-shrink-0`}>
+                  {i + 1}
+                </span>
                 <div className="flex-1 min-w-0">
-                  <h2 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors mb-2">{combo.title}</h2>
+                  <h2 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors mb-2">{combo.title}</h2>
                   <p className="text-sm font-medium text-blue-400/80 mb-2">{combo.tool_chain}</p>
-                  <p className="text-sm text-slate-400 leading-relaxed">{combo.description}</p>
+                  <p className="text-sm text-zinc-400 leading-relaxed">{combo.description}</p>
                   <div className="flex gap-2 mt-4 flex-wrap">
                     {combo.time_saved && (
                       <span className="badge-blue"><Clock className="w-3 h-3" /> 省时：{combo.time_saved}</span>

@@ -13,7 +13,7 @@ export default function PageHeader({ icon: Icon, title, subtitle }: {
         </span>
         <h1 className="text-3xl font-bold text-white">{title}</h1>
       </div>
-      {subtitle && <p className="text-slate-400">{subtitle}</p>}
+      {subtitle && <p className="text-zinc-500">{subtitle}</p>}
     </div>
   );
 }

@@ -28,17 +28,17 @@ export default function ToolDetailPage({ params }: any) {
       ]} />
 
       {/* Header Card */}
-      <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 md:p-8 mb-8">
+      <div className="bg-white/[0.02] border border-white/[0.04] rounded-3xl p-6 md:p-8 mb-8">
         <div className="flex flex-wrap items-start gap-4 justify-between">
           <div className="flex gap-4">
             <ToolIcon name={tool.name} size="lg" />
             <div>
               <h1 className="text-3xl font-bold text-white mb-2">{tool.name}</h1>
-              <p className="text-slate-400 text-base leading-relaxed">{tool.description_short}</p>
+              <p className="text-zinc-400 text-base leading-relaxed">{tool.description_short}</p>
               {tool.url && (
                 <a href={tool.url} target="_blank" rel="noopener noreferrer"
-                   className="inline-flex items-center gap-1.5 mt-3 px-4 py-2 rounded-xl bg-blue-600/20 border border-blue-500/30
-                              text-blue-400 hover:bg-blue-600/30 transition-all text-sm font-medium">
+                   className="inline-flex items-center gap-1.5 mt-3 px-4 py-2 rounded-xl bg-white/[0.04] border border-white/[0.08]
+                              text-zinc-300 hover:bg-white/[0.08] hover:text-white transition-all text-sm font-medium">
                   <ExternalLink className="w-3.5 h-3.5" />
                   访问官网
                 </a>
@@ -46,7 +46,6 @@ export default function ToolDetailPage({ params }: any) {
             </div>
           </div>
         </div>
-        {/* Badges */}
         <div className="flex gap-2 mt-6 flex-wrap">
           <BadgeGroup
             pricingTier={tool.pricing_tier}
@@ -56,7 +55,6 @@ export default function ToolDetailPage({ params }: any) {
             size="md"
           />
         </div>
-        {/* Tags */}
         <div className="flex gap-1.5 mt-4 flex-wrap">
           {tool.tags.map(tag => (<span key={tag} className="tag">{tag}</span>))}
         </div>
@@ -67,18 +65,18 @@ export default function ToolDetailPage({ params }: any) {
         <div className="lg:col-span-2 space-y-6">
 
           {/* Features */}
-          <section className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
+          <section className="bg-white/[0.02] border border-white/[0.04] rounded-2xl p-6">
             <h2 className="flex items-center gap-2 text-lg font-semibold text-white mb-4">
-              <span className="icon-wrap-sm bg-blue-500/20 text-blue-400"><ListChecks className="w-3.5 h-3.5" /></span>
+              <span className="icon-wrap-sm bg-blue-500/10 text-blue-400"><ListChecks className="w-3.5 h-3.5" /></span>
               功能介绍
             </h2>
-            <p className="text-slate-300 leading-relaxed">{tool.description}</p>
+            <p className="text-zinc-300 leading-relaxed">{tool.description}</p>
             {tool.features.length > 0 && (
               <div className="mt-4 space-y-2">
-                {tool.features.map((f, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-slate-400">
-                    <span className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-blue-400 text-[10px]">✓</span>
+                {tool.features.map((f: string, i: number) => (
+                  <div key={i} className="flex items-start gap-2.5 text-zinc-400">
+                    <span className="w-5 h-5 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-blue-400 text-[10px]">&#10003;</span>
                     </span>
                     {f}
                   </div>
@@ -88,15 +86,15 @@ export default function ToolDetailPage({ params }: any) {
           </section>
 
           {/* Shortcomings */}
-          <section className="bg-red-950/20 border border-red-900/30 rounded-2xl p-6">
+          <section className="bg-red-500/[0.03] border border-red-500/10 rounded-2xl p-6">
             <h2 className="flex items-center gap-2 text-lg font-semibold text-red-400 mb-4">
-              <span className="icon-wrap-sm bg-red-500/20 text-red-400"><AlertTriangle className="w-3.5 h-3.5" /></span>
+              <span className="icon-wrap-sm bg-red-500/10 text-red-400"><AlertTriangle className="w-3.5 h-3.5" /></span>
               不足之处
             </h2>
             {tool.shortcomings ? (
-              <p className="text-slate-300 leading-relaxed">{tool.shortcomings}</p>
+              <p className="text-zinc-300 leading-relaxed">{tool.shortcomings}</p>
             ) : (
-              <div className="text-slate-500">
+              <div className="text-zinc-500">
                 <p>该工具的不足分析正在整理中。</p>
                 <p className="mt-1.5 text-sm">每个 AI 工具都有其局限性，了解不足才能更好地选择和使用。</p>
               </div>
@@ -105,17 +103,17 @@ export default function ToolDetailPage({ params }: any) {
 
           {/* Related combinations */}
           {relatedCombos.length > 0 && (
-            <section className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
+            <section className="bg-white/[0.02] border border-white/[0.04] rounded-2xl p-6">
               <h2 className="flex items-center gap-2 text-lg font-semibold text-white mb-4">
-                <span className="icon-wrap-sm bg-violet-500/20 text-violet-400"><Link2 className="w-3.5 h-3.5" /></span>
+                <span className="icon-wrap-sm bg-violet-500/10 text-violet-400"><Link2 className="w-3.5 h-3.5" /></span>
                 相关搭配方案
               </h2>
               <div className="space-y-3">
                 {relatedCombos.map(combo => (
                   <Link key={combo.id} href={`/combinations/${combo.id}`}
-                    className="block bg-slate-800/60 rounded-xl p-4 hover:bg-slate-800 transition-colors border border-slate-700/50">
+                    className="block bg-white/[0.03] rounded-xl p-4 hover:bg-white/[0.05] transition-colors border border-white/[0.04]">
                     <h3 className="font-medium text-white">{combo.title}</h3>
-                    <p className="text-sm text-slate-400 mt-1">{combo.tool_chain}</p>
+                    <p className="text-sm text-zinc-400 mt-1">{combo.tool_chain}</p>
                   </Link>
                 ))}
               </div>
@@ -125,25 +123,24 @@ export default function ToolDetailPage({ params }: any) {
 
         {/* Sidebar */}
         <div className="space-y-6">
-          {/* Meta */}
-          <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-5">
-            <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">基本信息</h3>
+          <div className="bg-white/[0.02] border border-white/[0.04] rounded-2xl p-5">
+            <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wide mb-4">基本信息</h3>
             <div className="space-y-3 text-sm">
               <div className="flex justify-between">
-                <span className="text-slate-500">分类</span>
-                <span className="text-slate-300">{catNames[tool.category] || tool.category}</span>
+                <span className="text-zinc-500">分类</span>
+                <span className="text-zinc-300">{catNames[tool.category] || tool.category}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">价格</span>
-                <span className="text-slate-300">{priceLabelFull[tool.pricing_tier] || tool.pricing_tier}</span>
+                <span className="text-zinc-500">价格</span>
+                <span className="text-zinc-300">{priceLabelFull[tool.pricing_tier] || tool.pricing_tier}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">收录日期</span>
-                <span className="text-slate-300">{tool.date_added}</span>
+                <span className="text-zinc-500">收录日期</span>
+                <span className="text-zinc-300">{tool.date_added}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">最近更新</span>
-                <span className="text-slate-300">{tool.date_updated}</span>
+                <span className="text-zinc-500">最近更新</span>
+                <span className="text-zinc-300">{tool.date_updated}</span>
               </div>
               {tool.url && (
                 <a href={tool.url} target="_blank" rel="noopener noreferrer"
@@ -157,17 +154,17 @@ export default function ToolDetailPage({ params }: any) {
 
           {/* Complementary tools */}
           {complementary.length > 0 && (
-            <div className="bg-emerald-950/20 border border-emerald-900/30 rounded-2xl p-5">
+            <div className="bg-emerald-500/[0.03] border border-emerald-500/10 rounded-2xl p-5">
               <h3 className="text-sm font-semibold text-emerald-400 uppercase tracking-wide mb-4">推荐搭配</h3>
               <div className="space-y-2">
                 {complementary.map(ct => (
                   <Link key={ct.id} href={`/tools/${ct.slug}`}
-                    className="block bg-slate-800/60 rounded-xl p-3 hover:bg-slate-800 transition-colors border border-slate-700/50">
+                    className="block bg-white/[0.03] rounded-xl p-3 hover:bg-white/[0.05] transition-colors border border-white/[0.04]">
                     <h4 className="font-medium text-white text-sm">{ct.name}</h4>
-                    <p className="text-xs text-slate-400 mt-1 line-clamp-2">{ct.description_short}</p>
+                    <p className="text-xs text-zinc-400 mt-1 line-clamp-2">{ct.description_short}</p>
                     <span className={`text-[10px] inline-block mt-1.5 px-1.5 py-0.5 rounded ${
                       ct.pricing_tier === 'completely_free' || ct.pricing_tier === 'open_source'
-                        ? 'bg-emerald-950/50 text-emerald-400' : 'bg-slate-700 text-slate-400'
+                        ? 'badge-green' : 'badge'
                     }`}>{priceLabelFull[ct.pricing_tier] || ct.pricing_tier}</span>
                   </Link>
                 ))}

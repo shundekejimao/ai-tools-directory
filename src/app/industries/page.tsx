@@ -13,7 +13,7 @@ export default function IndustriesPage() {
   const industries = getIndustries();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="page-container py-8">
       <PageHeader icon={Building2} title="行业分类" subtitle="按行业场景查找最适合的AI工具组合" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -22,9 +22,9 @@ export default function IndustriesPage() {
           const Icon = industryIcons[ind.slug] || Package;
           return (
             <Link key={ind.slug} href={`/industries/${ind.slug}`}
-              className="group bg-slate-900/60 border border-slate-800 rounded-2xl p-6
-                         hover:border-slate-600 hover:bg-slate-900/80 hover:-translate-y-0.5
-                         hover:shadow-xl hover:shadow-black/10 transition-all duration-300">
+              className="group bg-white/[0.02] border border-white/[0.04] rounded-2xl p-6
+                         hover:border-white/[0.1] hover:bg-white/[0.04] hover:-translate-y-0.5
+                         transition-all duration-300">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <span className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${gradientColors[i % gradientColors.length]} flex items-center justify-center`}>
@@ -32,17 +32,17 @@ export default function IndustriesPage() {
                   </span>
                   <div>
                     <h2 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">{ind.name}</h2>
-                    <p className="text-sm text-slate-500">{tools.length} 个推荐工具</p>
+                    <p className="text-sm text-zinc-500">{tools.length} 个推荐工具</p>
                   </div>
                 </div>
               </div>
-              <p className="text-sm text-slate-400 mb-4 leading-relaxed">{ind.description}</p>
+              <p className="text-sm text-zinc-400 mb-4 leading-relaxed">{ind.description}</p>
               <div className="flex gap-1.5 flex-wrap">
                 {tools.slice(0, 5).map(t => (
                   <span key={t.id} className="tag">{t.name}</span>
                 ))}
                 {tools.length > 5 && (
-                  <span className="text-xs text-slate-600">+{tools.length - 5} 更多</span>
+                  <span className="text-xs text-zinc-600">+{tools.length - 5} 更多</span>
                 )}
               </div>
             </Link>
