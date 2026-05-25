@@ -17,6 +17,12 @@ const gradientColors = [
   'from-amber-500 to-orange-500', 'from-sky-500 to-indigo-500',
 ];
 
+const catNames: Record<string, string> = {
+  browser: '浏览器', image: '图像', code: '编程', voice: '语音',
+  video: '视频', model: '大模型', office: '办公', ecommerce: '电商',
+  design: '设计', other: '其他',
+};
+
 const priceLabel: Record<string, string> = {
   completely_free: '免费', open_source: '开源',
   freemium: '部分免费', paid: '付费',
@@ -65,7 +71,7 @@ export default function IndustryDetailPage({ params }: any) {
                 </span>
                 <div className="min-w-0 flex-1">
                   <h2 className="font-semibold text-white group-hover:text-blue-400 transition-colors truncate">{tool.name}</h2>
-                  <p className="text-xs text-slate-500 mt-0.5">{tool.category}</p>
+                  <p className="text-xs text-slate-500 mt-0.5">{catNames[tool.category] || tool.category}</p>
                 </div>
                 <span className={`badge flex-shrink-0 text-[10px] ${
                   tool.pricing_tier === 'completely_free' || tool.pricing_tier === 'open_source'

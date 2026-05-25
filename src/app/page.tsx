@@ -25,6 +25,12 @@ export default function HomePage() {
     'from-fuchsia-500 to-rose-500',
   ];
 
+  const catNames: Record<string, string> = {
+    browser: '浏览器', image: '图像', code: '编程', voice: '语音',
+    video: '视频', model: '大模型', office: '办公', ecommerce: '电商',
+    design: '设计', other: '其他',
+  };
+
   const priceLabel: Record<string, string> = {
     completely_free: '免费', open_source: '开源',
     freemium: '部分免费', paid: '付费', unknown: '未知',
@@ -116,7 +122,7 @@ export default function HomePage() {
                   </span>
                   <div className="min-w-0">
                     <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors truncate">{tool.name}</h3>
-                    <p className="text-xs text-slate-500 mt-0.5">{tool.category}</p>
+                    <p className="text-xs text-slate-500 mt-0.5">{catNames[tool.category] || tool.category}</p>
                   </div>
                   <span className={`badge flex-shrink-0 ${
                     tool.pricing_tier === 'completely_free' || tool.pricing_tier === 'open_source'
@@ -155,7 +161,7 @@ export default function HomePage() {
                   <h3 className="font-medium text-sm text-white group-hover:text-emerald-400 transition-colors truncate">{tool.name}</h3>
                 </div>
                 <div className="flex gap-1 flex-wrap">
-                  <span className="text-[10px] text-slate-500 bg-slate-800 px-1.5 py-0.5 rounded">{tool.category}</span>
+                  <span className="text-[10px] text-slate-500 bg-slate-800 px-1.5 py-0.5 rounded">{catNames[tool.category] || tool.category}</span>
                   {tool.ecommerce_relevant && <span className="badge-purple text-[10px]">电商</span>}
                 </div>
               </Link>

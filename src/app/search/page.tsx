@@ -4,6 +4,12 @@ import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 
+const catNames: Record<string, string> = {
+  browser: '浏览器', image: '图像', code: '编程', voice: '语音',
+  video: '视频', model: '大模型', office: '办公', ecommerce: '电商',
+  design: '设计', other: '其他',
+};
+
 interface Tool {
   id: string; slug: string; name: string; category: string;
   description_short?: string; tags: string[];
@@ -75,7 +81,7 @@ function SearchContent() {
             <h2 className="font-medium text-slate-200 group-hover:text-blue-400 transition-colors">{tool.name}</h2>
             <p className="text-sm text-slate-400 mt-1 line-clamp-2">{tool.description_short}</p>
             <div className="flex gap-1.5 mt-3 flex-wrap">
-              <span className="text-xs bg-slate-700 text-slate-400 px-2 py-0.5 rounded">{tool.category}</span>
+              <span className="text-xs bg-slate-700 text-slate-400 px-2 py-0.5 rounded">{catNames[tool.category] || tool.category}</span>
               {tool.tags.slice(0, 2).map(tag => (
                 <span key={tag} className="text-xs bg-slate-700 text-slate-400 px-2 py-0.5 rounded">{tag}</span>
               ))}

@@ -6,6 +6,12 @@ export async function generateStaticParams() {
   return getTools().map(t => ({ slug: t.slug }));
 }
 
+const catNames: Record<string, string> = {
+  browser: '浏览器', image: '图像', code: '编程', voice: '语音',
+  video: '视频', model: '大模型', office: '办公', ecommerce: '电商',
+  design: '设计', other: '其他',
+};
+
 const priceLabel: Record<string, string> = {
   completely_free: '完全免费', open_source: '开源免费',
   freemium: '免费+付费', paid: '付费', unknown: '未知',
@@ -139,7 +145,7 @@ export default function ToolDetailPage({ params }: any) {
             <div className="space-y-3 text-sm">
               <div className="flex justify-between">
                 <span className="text-slate-500">分类</span>
-                <span className="text-slate-300">{tool.category}</span>
+                <span className="text-slate-300">{catNames[tool.category] || tool.category}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">价格</span>
