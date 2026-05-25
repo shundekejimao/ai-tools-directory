@@ -2,9 +2,10 @@ import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <div className="max-w-xl mx-auto px-4 py-24 text-center">
-      <h1 className="text-6xl font-bold text-slate-700 mb-4">404</h1>
-      <p className="text-slate-400 text-lg mb-8">页面未找到</p>
+    <div className="max-w-md mx-auto px-4 py-24 text-center">
+      <span className="text-6xl block mb-6">🔍</span>
+      <h1 className="text-2xl font-bold text-white mb-3">页面未找到</h1>
+      <p className="text-slate-400 mb-8">您访问的页面不存在或已被移除</p>
       <Link href="/" className="btn-primary">返回首页</Link>
     </div>
   );

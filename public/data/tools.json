@@ -17,7 +17,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://github.com/browseros/browseros",
     "tags": [
       "开源",
       "免费",
@@ -47,7 +47,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": true,
-    "url": "",
+    "url": "https://www.coze.cn",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -59,8 +59,8 @@
     "slug": "anthropic-nla",
     "name": "Anthropic NLA",
     "category": "other",
-    "description": "开源\"读懂AI内心\"工具，实验发现Claude有时\"知道但不说\"5月14日（3个工具）",
-    "description_short": "开源\"读懂AI内心\"工具，实验发现Claude有时\"知道但不说\"5月14日（3个工具）",
+    "description": "开源\"读懂AI内心\"工具，实验发现Claude有时\"知道但不说\"",
+    "description_short": "开源\"读懂AI内心\"工具，实验发现Claude有时\"知道但不说\"",
     "features": [
       "开源\"读懂AI内心\"工具",
       "实验发现Claude有时\"知道但不说\"5月14日（3个工具）"
@@ -71,7 +71,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://claude.ai/chrome",
     "tags": [
       "开源"
     ],
@@ -98,7 +98,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://yiyan.baidu.com",
     "tags": [
       "国产"
     ],
@@ -125,7 +125,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://yiyan.baidu.com",
     "tags": [
       "国产"
     ],
@@ -139,8 +139,8 @@
     "slug": "百度dumate",
     "name": "百度DuMate",
     "category": "office",
-    "description": "百度通用智能体，像数字员工自动帮你干活，每日1000免费点数5月15日（3个工具，DuMate/秒哒有更新信息）",
-    "description_short": "百度通用智能体，像数字员工自动帮你干活，每日1000免费点数5月15日（3个工具，DuMate/秒哒有更新信息）",
+    "description": "百度通用智能体，像数字员工自动帮你干活，每日1000免费点数",
+    "description_short": "百度通用智能体，像数字员工自动帮你干活，每日1000免费点数",
     "features": [
       "百度通用智能体",
       "像数字员工自动帮你干活",
@@ -153,7 +153,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://yiyan.baidu.com",
     "tags": [
       "免费"
     ],
@@ -180,7 +180,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://chat.deepseek.com",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -192,8 +192,8 @@
     "slug": "阿里万小智2-0",
     "name": "阿里万小智2.0",
     "category": "other",
-    "description": "AI建站平台，新用户2000灵感值免费5月16日（4个工具，DuMate/秒哒/DeepSeek有更新信息）",
-    "description_short": "AI建站平台，新用户2000灵感值免费5月16日（4个工具，DuMate/秒哒/DeepSeek有更新信息）",
+    "description": "AI建站平台，新用户2000灵感值免费",
+    "description_short": "AI建站平台，新用户2000灵感值免费",
     "features": [
       "AI建站平台",
       "新用户2000灵感值免费5月16日（4个工具",
@@ -205,7 +205,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://tongyi.aliyun.com",
     "tags": [
       "免费"
     ],
@@ -232,7 +232,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://github.com/Xiaomi/OmniVoice",
     "tags": [
       "开源"
     ],
@@ -246,8 +246,8 @@
     "slug": "deepseek-v4-flash",
     "name": "DeepSeek V4 Flash",
     "category": "model",
-    "description": "284亿参数轻量版，100万Token上下文，免费使用5月17日（3个工具）",
-    "description_short": "284亿参数轻量版，100万Token上下文，免费使用5月17日（3个工具）",
+    "description": "284亿参数轻量版，100万Token上下文，免费使用",
+    "description_short": "284亿参数轻量版，100万Token上下文，免费使用",
     "features": [
       "284亿参数轻量版",
       "100万Token上下文",
@@ -259,7 +259,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://chat.deepseek.com",
     "tags": [
       "免费"
     ],
@@ -286,7 +286,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://tongyi.aliyun.com",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -312,7 +312,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://www.supertone.ai",
     "tags": [
       "开源",
       "本地运行"
@@ -327,8 +327,8 @@
     "slug": "notion开发者平台",
     "name": "Notion开发者平台",
     "category": "code",
-    "description": "从笔记工具升级成AI Agent工作台5月18日（5个工具）",
-    "description_short": "从笔记工具升级成AI Agent工作台5月18日（5个工具）",
+    "description": "从笔记工具升级成AI Agent工作台",
+    "description_short": "从笔记工具升级成AI Agent工作台",
     "features": [
       "从笔记工具升级成AI Agent工作台5月18日（5个工具）"
     ],
@@ -338,7 +338,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://developers.notion.com",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -362,7 +362,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://weixin.qq.com",
     "tags": [
       "免费"
     ],
@@ -388,7 +388,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://qoder.com",
     "tags": [
       "免费"
     ],
@@ -414,7 +414,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://kimi.moonshot.cn",
     "tags": [
       "浏览器"
     ],
@@ -441,7 +441,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://chatglm.cn",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -453,8 +453,8 @@
     "slug": "微信8-0-73",
     "name": "微信8.0.73",
     "category": "other",
-    "description": "隐藏来电+隔空传送+元宝聊天5月19日（3个工具）",
-    "description_short": "隐藏来电+隔空传送+元宝聊天5月19日（3个工具）",
+    "description": "隐藏来电+隔空传送+元宝聊天",
+    "description_short": "隐藏来电+隔空传送+元宝聊天",
     "features": [
       "隐藏来电+隔空传送+元宝聊天5月19日（3个工具）"
     ],
@@ -464,7 +464,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://weixin.qq.com",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -488,7 +488,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://ardot.tencent.com",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -511,7 +511,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://qoder.com/qoderwork",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -523,8 +523,8 @@
     "slug": "whisper-web",
     "name": "Whisper Web",
     "category": "code",
-    "description": "浏览器端免费音频转文字，支持100+语言5月20日（5个工具，Ardot/QoderWork有更新信息）",
-    "description_short": "浏览器端免费音频转文字，支持100+语言5月20日（5个工具，Ardot/QoderWork有更新信息）",
+    "description": "浏览器端免费音频转文字，支持100+语言",
+    "description_short": "浏览器端免费音频转文字，支持100+语言",
     "features": [
       "浏览器端免费音频转文字",
       "支持100+语言5月20日（5个工具",
@@ -536,7 +536,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://github.com/openai/whisper",
     "tags": [
       "免费",
       "浏览器"
@@ -564,7 +564,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://tinyhumans.ai/openhuman",
     "tags": [
       "开源",
       "本地运行"
@@ -592,7 +592,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://github.com/OpenBMB/MiniCPM",
     "tags": [
       "本地运行"
     ],
@@ -606,8 +606,8 @@
     "slug": "gemini-3-5-flash",
     "name": "Gemini 3.5 Flash",
     "category": "model",
-    "description": "谷歌最强免费AI模型，速度4倍于竞品，100万Token上下文5月21日（4个工具）",
-    "description_short": "谷歌最强免费AI模型，速度4倍于竞品，100万Token上下文5月21日（4个工具）",
+    "description": "谷歌最强免费AI模型，速度4倍于竞品，100万Token上下文",
+    "description_short": "谷歌最强免费AI模型，速度4倍于竞品，100万Token上下文",
     "features": [
       "谷歌最强免费AI模型",
       "速度4倍于竞品",
@@ -619,7 +619,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://gemini.google.com",
     "tags": [
       "免费"
     ],
@@ -645,7 +645,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://tongyi.aliyun.com",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -669,7 +669,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://ai.10086.cn",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -694,7 +694,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://tongyi.aliyun.com",
     "tags": [
       "国产"
     ],
@@ -708,8 +708,8 @@
     "slug": "stability-audio-3-0",
     "name": "Stability Audio 3.0",
     "category": "voice",
-    "description": "开源AI音乐生成，最长6分20秒完整歌曲5月22日（2个工具，Stable Audio有更新）",
-    "description_short": "开源AI音乐生成，最长6分20秒完整歌曲5月22日（2个工具，Stable Audio有更新）",
+    "description": "开源AI音乐生成，最长6分20秒完整歌曲",
+    "description_short": "开源AI音乐生成，最长6分20秒完整歌曲",
     "features": [
       "开源AI音乐生成",
       "最长6分20秒完整歌曲5月22日（2个工具",
@@ -721,7 +721,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://stability.ai",
     "tags": [
       "开源"
     ],
@@ -735,8 +735,8 @@
     "slug": "stable-audio-3-0-comfyui支持",
     "name": "Stable Audio 3.0 ComfyUI支持",
     "category": "other",
-    "description": "Day-0原生支持，下载模板就能跑，CPU可跑Small版5月23日（2个工具）",
-    "description_short": "Day-0原生支持，下载模板就能跑，CPU可跑Small版5月23日（2个工具）",
+    "description": "Day-0原生支持，下载模板就能跑，CPU可跑Small版",
+    "description_short": "Day-0原生支持，下载模板就能跑，CPU可跑Small版",
     "features": [
       "Day-0原生支持",
       "下载模板就能跑",
@@ -748,7 +748,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://stability.ai",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -773,7 +773,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://chatgpt.com",
     "tags": [
       "免费"
     ],
@@ -787,8 +787,8 @@
     "slug": "cursor-composer-2-5",
     "name": "Cursor Composer 2.5",
     "category": "code",
-    "description": "自研编码模型，编程能力只差Claude 0.3%，价格1/10 5月24日（3个工具）",
-    "description_short": "自研编码模型，编程能力只差Claude 0.3%，价格1/10 5月24日（3个工具）",
+    "description": "自研编码模型，编程能力只差Claude 0.3%，价格1/10",
+    "description_short": "自研编码模型，编程能力只差Claude 0.3%，价格1/10",
     "features": [
       "自研编码模型",
       "编程能力只差Claude 0.3%",
@@ -800,7 +800,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://cursor.com",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -825,7 +825,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://chatgpt.com",
     "tags": [
       "免费"
     ],
@@ -852,7 +852,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://marvis.qq.com",
     "tags": [
       "免费"
     ],
@@ -866,8 +866,8 @@
     "slug": "字节lance",
     "name": "字节Lance",
     "category": "model",
-    "description": "开源3B多模态模型，消费级显卡就能跑5月25日（5个工具，Marvis/ChatGPT填表有更新信息）",
-    "description_short": "开源3B多模态模型，消费级显卡就能跑5月25日（5个工具，Marvis/ChatGPT填表有更新信息）",
+    "description": "开源3B多模态模型，消费级显卡就能跑",
+    "description_short": "开源3B多模态模型，消费级显卡就能跑",
     "features": [
       "开源3B多模态模型",
       "消费级显卡就能跑5月25日（5个工具",
@@ -879,7 +879,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://github.com/bytedance/Lance",
     "tags": [
       "开源"
     ],
@@ -906,7 +906,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://www.jiaotuai.cn",
     "tags": [
       "免费",
       "国产"
@@ -933,7 +933,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://runwayml.com",
     "tags": [],
     "complementary_tools": [],
     "related_combinations": [],
@@ -956,7 +956,7 @@
     "china_accessible": true,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
-    "url": "",
+    "url": "https://dashboard.cohere.com",
     "tags": [
       "开源"
     ],

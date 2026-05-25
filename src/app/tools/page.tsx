@@ -1,6 +1,17 @@
 import Link from 'next/link';
 import { getTools } from '@/lib/data';
 
+const gradientColors = [
+  'from-blue-500 to-cyan-500', 'from-violet-500 to-purple-500',
+  'from-emerald-500 to-teal-500', 'from-rose-500 to-pink-500',
+  'from-amber-500 to-orange-500', 'from-sky-500 to-indigo-500',
+];
+
+const priceLabel: Record<string, string> = {
+  completely_free: '免费', open_source: '开源',
+  freemium: '部分免费', paid: '付费', unknown: '未知',
+};
+
 export default function ToolsPage() {
   const tools = getTools();
   tools.sort((a, b) => b.date_added.localeCompare(a.date_added));
@@ -9,58 +20,53 @@ export default function ToolsPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-slate-200">全部AI工具 ({tools.length})</h1>
-        <Link href="/feed" className="text-sm text-blue-400 hover:text-blue-300">更新动态 →</Link>
+      {/* Header */}
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-3">
+          <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center text-sm">🔧</span>
+          <h1 className="text-3xl font-bold text-white">全部AI工具</h1>
+        </div>
+        <p className="text-slate-400">共 {tools.length} 款 AI 工具，持续更新中</p>
       </div>
 
-      {/* Category filter tabs */}
-      <div className="flex gap-2 mb-6 flex-wrap">
-        <Link
-          href="/tools"
-          className="px-3 py-1.5 rounded-lg text-sm bg-blue-600 text-white"
-        >全部</Link>
+      {/* Category filter */}
+      <div className="flex gap-2 mb-8 flex-wrap">
+        <span className="px-4 py-2 rounded-xl text-sm font-medium bg-blue-600 text-white shadow-lg shadow-blue-600/25">全部</span>
         {categories.map(cat => (
-          <Link
-            key={cat}
-            href={`/tools?category=${cat}`}
-            className="px-3 py-1.5 rounded-lg text-sm bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-200 transition-colors"
-          >{cat}</Link>
+          <span key={cat}
+            className="px-4 py-2 rounded-xl text-sm bg-slate-800 text-slate-400 border border-slate-700/50 hover:border-slate-600 hover:text-slate-200 transition-colors cursor-pointer">
+            {cat}
+          </span>
         ))}
       </div>
 
       {/* Tool grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {tools.map(tool => (
-          <Link key={tool.id} href={`/tools/${tool.slug}`} className="card group">
-            <div className="flex items-start justify-between mb-2">
-              <h2 className="font-medium text-slate-200 group-hover:text-blue-400 transition-colors">{tool.name}</h2>
-              <span className={`text-xs px-2 py-0.5 rounded-full ${
-                tool.pricing_tier === 'completely_free' || tool.pricing_tier === 'open_source'
-                  ? 'bg-green-900/50 text-green-400 border border-green-700'
-                  : tool.pricing_tier === 'freemium'
-                  ? 'bg-yellow-900/50 text-yellow-400 border border-yellow-700'
-                  : 'bg-slate-700 text-slate-400'
-              }`}>
-                {tool.pricing_tier === 'completely_free' ? '免费' :
-                 tool.pricing_tier === 'open_source' ? '开源' :
-                 tool.pricing_tier === 'freemium' ? '部分免费' : '付费'}
+        {tools.map((tool, i) => (
+          <Link key={tool.id} href={`/tools/${tool.slug}`}
+            className="group bg-slate-900/60 border border-slate-800 rounded-2xl p-5
+                       hover:border-slate-600 hover:bg-slate-900/80 transition-all duration-300">
+            <div className="flex items-start gap-3 mb-3">
+              <span className={`w-10 h-10 rounded-xl bg-gradient-to-br ${gradientColors[i % gradientColors.length]} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
+                {tool.name[0]}
               </span>
+              <div className="min-w-0 flex-1">
+                <h2 className="font-semibold text-white group-hover:text-blue-400 transition-colors truncate">{tool.name}</h2>
+                <p className="text-xs text-slate-500 mt-0.5">{tool.category} · {tool.date_added}</p>
+              </div>
+              <span className={`badge flex-shrink-0 ${
+                tool.pricing_tier === 'completely_free' || tool.pricing_tier === 'open_source'
+                  ? 'badge-green' : tool.pricing_tier === 'freemium'
+                  ? 'badge-yellow' : 'badge'
+              }`}>{priceLabel[tool.pricing_tier] || tool.pricing_tier}</span>
             </div>
-            <p className="text-sm text-slate-400 line-clamp-2 mb-3">{tool.description_short}</p>
+            <p className="text-sm text-slate-400 line-clamp-2 leading-relaxed mb-3">{tool.description_short}</p>
             <div className="flex gap-1.5 flex-wrap">
-              <span className="text-xs bg-slate-700 text-slate-400 px-2 py-0.5 rounded">{tool.category}</span>
-              {tool.china_accessible && (
-                <span className="text-xs bg-green-900/30 text-green-500 px-2 py-0.5 rounded">国内可用</span>
-              )}
-              {tool.beginner_friendly && (
-                <span className="text-xs bg-blue-900/30 text-blue-400 px-2 py-0.5 rounded">小白友好</span>
-              )}
-              {tool.ecommerce_relevant && (
-                <span className="text-xs bg-purple-900/30 text-purple-400 px-2 py-0.5 rounded">电商相关</span>
-              )}
+              {tool.tags.slice(0, 3).map(tag => (<span key={tag} className="tag">{tag}</span>))}
+              {tool.china_accessible && <span className="badge-green text-[10px]">国内可用</span>}
+              {tool.beginner_friendly && <span className="badge-blue text-[10px]">小白友好</span>}
+              {tool.ecommerce_relevant && <span className="badge-purple text-[10px]">电商</span>}
             </div>
-            <p className="text-xs text-slate-600 mt-3">收录于 {tool.date_added} · 更新于 {tool.date_updated}</p>
           </Link>
         ))}
       </div>
