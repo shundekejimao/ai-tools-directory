@@ -1,0 +1,58 @@
+[
+  {
+    "id": "ecommerce",
+    "name": "电商",
+    "slug": "ecommerce",
+    "description": "选品、产品图、比价、客服等电商场景AI工具",
+    "recommended_tool_ids": []
+  },
+  {
+    "id": "content",
+    "name": "内容创作",
+    "slug": "content",
+    "description": "文案、视频、音频等自媒体内容创作工具",
+    "recommended_tool_ids": []
+  },
+  {
+    "id": "programming",
+    "name": "编程开发",
+    "slug": "programming",
+    "description": "AI编程、代码生成、全栈开发工具",
+    "recommended_tool_ids": []
+  },
+  {
+    "id": "design",
+    "name": "设计创意",
+    "slug": "design",
+    "description": "AI设计、出图、UI生成工具",
+    "recommended_tool_ids": []
+  },
+  {
+    "id": "office",
+    "name": "办公效率",
+    "slug": "office",
+    "description": "PPT、填表、自动化办公工具",
+    "recommended_tool_ids": []
+  },
+  {
+    "id": "audio-video",
+    "name": "音频视频",
+    "slug": "audio-video",
+    "description": "配音、音乐、视频生成工具",
+    "recommended_tool_ids": []
+  },
+  {
+    "id": "ai-models",
+    "name": "AI大模型",
+    "slug": "ai-models",
+    "description": "底层大语言模型和多模态模型",
+    "recommended_tool_ids": []
+  },
+  {
+    "id": "local-offline",
+    "name": "本地/离线",
+    "slug": "local-offline",
+    "description": "不需联网、本地运行的AI工具",
+    "recommended_tool_ids": []
+  }
+]

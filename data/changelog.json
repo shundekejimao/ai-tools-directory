@@ -1,0 +1,275 @@
+[
+  {
+    "id": 1,
+    "entity_type": "tool",
+    "entity_id": "tool-browseros",
+    "change_desc": "收录工具：BrowserOS",
+    "changed_at": "2026-05-13"
+  },
+  {
+    "id": 2,
+    "entity_type": "tool",
+    "entity_id": "tool-coze扣子图像流",
+    "change_desc": "收录工具：Coze扣子图像流",
+    "changed_at": "2026-05-13"
+  },
+  {
+    "id": 3,
+    "entity_type": "tool",
+    "entity_id": "tool-anthropic-nla",
+    "change_desc": "收录工具：Anthropic NLA",
+    "changed_at": "2026-05-13"
+  },
+  {
+    "id": 4,
+    "entity_type": "tool",
+    "entity_id": "tool-百度秒哒3-0",
+    "change_desc": "收录工具：百度秒哒3.0",
+    "changed_at": "2026-05-14"
+  },
+  {
+    "id": 5,
+    "entity_type": "tool",
+    "entity_id": "tool-文心5-1-ernie-5-1",
+    "change_desc": "收录工具：文心5.1（ERNIE 5.1）",
+    "changed_at": "2026-05-14"
+  },
+  {
+    "id": 6,
+    "entity_type": "tool",
+    "entity_id": "tool-百度dumate",
+    "change_desc": "收录工具：百度DuMate",
+    "changed_at": "2026-05-14"
+  },
+  {
+    "id": 7,
+    "entity_type": "tool",
+    "entity_id": "tool-deepseek识图模式",
+    "change_desc": "收录工具：DeepSeek识图模式",
+    "changed_at": "2026-05-15"
+  },
+  {
+    "id": 8,
+    "entity_type": "tool",
+    "entity_id": "tool-阿里万小智2-0",
+    "change_desc": "收录工具：阿里万小智2.0",
+    "changed_at": "2026-05-15"
+  },
+  {
+    "id": 9,
+    "entity_type": "tool",
+    "entity_id": "tool-小米omnivoice",
+    "change_desc": "收录工具：小米OmniVoice",
+    "changed_at": "2026-05-16"
+  },
+  {
+    "id": 10,
+    "entity_type": "tool",
+    "entity_id": "tool-deepseek-v4-flash",
+    "change_desc": "收录工具：DeepSeek V4 Flash",
+    "changed_at": "2026-05-16"
+  },
+  {
+    "id": 11,
+    "entity_type": "tool",
+    "entity_id": "tool-千问ai购物助手",
+    "change_desc": "收录工具：千问AI购物助手",
+    "changed_at": "2026-05-17"
+  },
+  {
+    "id": 12,
+    "entity_type": "tool",
+    "entity_id": "tool-supertonic-v3",
+    "change_desc": "收录工具：Supertonic v3",
+    "changed_at": "2026-05-17"
+  },
+  {
+    "id": 13,
+    "entity_type": "tool",
+    "entity_id": "tool-notion开发者平台",
+    "change_desc": "收录工具：Notion开发者平台",
+    "changed_at": "2026-05-17"
+  },
+  {
+    "id": 14,
+    "entity_type": "tool",
+    "entity_id": "tool-微信ai头像-ai歌曲",
+    "change_desc": "收录工具：微信AI头像+AI歌曲",
+    "changed_at": "2026-05-18"
+  },
+  {
+    "id": 15,
+    "entity_type": "tool",
+    "entity_id": "tool-阿里qoder-1-0",
+    "change_desc": "收录工具：阿里Qoder 1.0",
+    "changed_at": "2026-05-18"
+  },
+  {
+    "id": 16,
+    "entity_type": "tool",
+    "entity_id": "tool-kimi-webbridge",
+    "change_desc": "收录工具：Kimi WebBridge",
+    "changed_at": "2026-05-18"
+  },
+  {
+    "id": 17,
+    "entity_type": "tool",
+    "entity_id": "tool-glm-5v-turbo",
+    "change_desc": "收录工具：GLM-5V-Turbo",
+    "changed_at": "2026-05-18"
+  },
+  {
+    "id": 18,
+    "entity_type": "tool",
+    "entity_id": "tool-微信8-0-73",
+    "change_desc": "收录工具：微信8.0.73",
+    "changed_at": "2026-05-18"
+  },
+  {
+    "id": 19,
+    "entity_type": "tool",
+    "entity_id": "tool-腾讯ardot",
+    "change_desc": "收录工具：腾讯Ardot",
+    "changed_at": "2026-05-19"
+  },
+  {
+    "id": 20,
+    "entity_type": "tool",
+    "entity_id": "tool-阿里qoderwork设计工作台",
+    "change_desc": "收录工具：阿里QoderWork设计工作台",
+    "changed_at": "2026-05-19"
+  },
+  {
+    "id": 21,
+    "entity_type": "tool",
+    "entity_id": "tool-whisper-web",
+    "change_desc": "收录工具：Whisper Web",
+    "changed_at": "2026-05-19"
+  },
+  {
+    "id": 22,
+    "entity_type": "tool",
+    "entity_id": "tool-openhuman",
+    "change_desc": "收录工具：OpenHuman",
+    "changed_at": "2026-05-20"
+  },
+  {
+    "id": 23,
+    "entity_type": "tool",
+    "entity_id": "tool-minicpm-v-4-6",
+    "change_desc": "收录工具：MiniCPM-V 4.6",
+    "changed_at": "2026-05-20"
+  },
+  {
+    "id": 24,
+    "entity_type": "tool",
+    "entity_id": "tool-gemini-3-5-flash",
+    "change_desc": "收录工具：Gemini 3.5 Flash",
+    "changed_at": "2026-05-20"
+  },
+  {
+    "id": 25,
+    "entity_type": "tool",
+    "entity_id": "tool-阿里千问云",
+    "change_desc": "收录工具：阿里千问云",
+    "changed_at": "2026-05-21"
+  },
+  {
+    "id": 26,
+    "entity_type": "tool",
+    "entity_id": "tool-中国移动词元套餐",
+    "change_desc": "收录工具：中国移动词元套餐",
+    "changed_at": "2026-05-21"
+  },
+  {
+    "id": 27,
+    "entity_type": "tool",
+    "entity_id": "tool-qwen3-7-max",
+    "change_desc": "收录工具：Qwen3.7-Max",
+    "changed_at": "2026-05-21"
+  },
+  {
+    "id": 28,
+    "entity_type": "tool",
+    "entity_id": "tool-stability-audio-3-0",
+    "change_desc": "收录工具：Stability Audio 3.0",
+    "changed_at": "2026-05-21"
+  },
+  {
+    "id": 29,
+    "entity_type": "tool",
+    "entity_id": "tool-stable-audio-3-0-comfyui支持",
+    "change_desc": "收录工具：Stable Audio 3.0 ComfyUI支持",
+    "changed_at": "2026-05-22"
+  },
+  {
+    "id": 30,
+    "entity_type": "tool",
+    "entity_id": "tool-chatgpt-for-powerpoint",
+    "change_desc": "收录工具：ChatGPT for PowerPoint",
+    "changed_at": "2026-05-23"
+  },
+  {
+    "id": 31,
+    "entity_type": "tool",
+    "entity_id": "tool-cursor-composer-2-5",
+    "change_desc": "收录工具：Cursor Composer 2.5",
+    "changed_at": "2026-05-23"
+  },
+  {
+    "id": 32,
+    "entity_type": "tool",
+    "entity_id": "tool-chatgpt-ai填表",
+    "change_desc": "收录工具：ChatGPT AI填表",
+    "changed_at": "2026-05-24"
+  },
+  {
+    "id": 33,
+    "entity_type": "tool",
+    "entity_id": "tool-腾讯marvis马维斯",
+    "change_desc": "收录工具：腾讯Marvis马维斯",
+    "changed_at": "2026-05-24"
+  },
+  {
+    "id": 34,
+    "entity_type": "tool",
+    "entity_id": "tool-字节lance",
+    "change_desc": "收录工具：字节Lance",
+    "changed_at": "2026-05-24"
+  },
+  {
+    "id": 35,
+    "entity_type": "tool",
+    "entity_id": "tool-椒图ai",
+    "change_desc": "收录工具：椒图AI",
+    "changed_at": "2026-05-25"
+  },
+  {
+    "id": 36,
+    "entity_type": "tool",
+    "entity_id": "tool-runway-agent",
+    "change_desc": "收录工具：Runway Agent",
+    "changed_at": "2026-05-25"
+  },
+  {
+    "id": 37,
+    "entity_type": "tool",
+    "entity_id": "tool-cohere-command-a",
+    "change_desc": "收录工具：Cohere Command A+",
+    "changed_at": "2026-05-25"
+  },
+  {
+    "id": 38,
+    "entity_type": "tool",
+    "entity_id": "tool-test-tool",
+    "change_desc": "收录工具：���Թ���",
+    "changed_at": "2026-05-25"
+  },
+  {
+    "id": 39,
+    "entity_type": "tool",
+    "entity_id": "tool-test-tool",
+    "change_desc": "删除工具：���Թ���",
+    "changed_at": "2026-05-25"
+  }
+]

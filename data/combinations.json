@@ -1,0 +1,82 @@
+[
+  {
+    "id": "combo-内容创作全家桶",
+    "title": "内容创作全家桶",
+    "description": "豆包（文案）→ 剪映（图文成片）→ Coze（定时触发）= 免费3小时压缩到45分钟",
+    "tool_chain": "豆包（文案）→ 剪映（图文成片）→ Coze（定时触发）= 免费3小时压缩到45分钟",
+    "use_case": "design",
+    "time_saved": "3小时",
+    "cost_summary": "免费",
+    "date_updated": "2026-05-25"
+  },
+  {
+    "id": "combo-电商选品-比价",
+    "title": "电商选品+比价",
+    "description": "千问AI购物（AI选品）→ 1688/淘宝（下单）= 一句话从40亿商品找货",
+    "tool_chain": "千问AI购物（AI选品）→ 1688/淘宝（下单）= 一句话从40亿商品找货",
+    "use_case": "ecommerce",
+    "time_saved": "",
+    "cost_summary": "",
+    "date_updated": "2026-05-25"
+  },
+  {
+    "id": "combo-零成本配音视频",
+    "title": "零成本配音视频",
+    "description": "Supertonic v3（本地配音）→ 剪映（剪辑）= 不花钱不联网",
+    "tool_chain": "Supertonic v3（本地配音）→ 剪映（剪辑）= 不花钱不联网",
+    "use_case": "video",
+    "time_saved": "",
+    "cost_summary": "",
+    "date_updated": "2026-05-25"
+  },
+  {
+    "id": "combo-ai设计到代码",
+    "title": "AI设计到代码",
+    "description": "Ardot（生成设计稿）→ Cursor/CodeBuddy（一键转代码）= 零设计基础出产品",
+    "tool_chain": "Ardot（生成设计稿）→ Cursor/CodeBuddy（一键转代码）= 零设计基础出产品",
+    "use_case": "design",
+    "time_saved": "",
+    "cost_summary": "",
+    "date_updated": "2026-05-25"
+  },
+  {
+    "id": "combo-调研型ppt",
+    "title": "调研型PPT",
+    "description": "秘塔AI搜索（搜资料）→ ChatGPT for PPT（出PPT）= 3小时→20分钟",
+    "tool_chain": "秘塔AI搜索（搜资料）→ ChatGPT for PPT（出PPT）= 3小时→20分钟",
+    "use_case": "design",
+    "time_saved": "3小时",
+    "cost_summary": "",
+    "date_updated": "2026-05-25"
+  },
+  {
+    "id": "combo-ai填表",
+    "title": "AI填表",
+    "description": "通义千问/Kimi（国内替代）→ 上传表单截图+说\"帮我填\" = 不翻墙也能AI填表",
+    "tool_chain": "通义千问/Kimi（国内替代）→ 上传表单截图+说\"帮我填\" = 不翻墙也能AI填表",
+    "use_case": "design",
+    "time_saved": "",
+    "cost_summary": "",
+    "date_updated": "2026-05-25"
+  },
+  {
+    "id": "combo-办公自动化",
+    "title": "办公自动化",
+    "description": "Marvis（操控电脑）→ DeepSeek（推理分析）= \"动口不动手\"",
+    "tool_chain": "Marvis（操控电脑）→ DeepSeek（推理分析）= \"动口不动手\"",
+    "use_case": "office",
+    "time_saved": "",
+    "cost_summary": "",
+    "date_updated": "2026-05-25"
+  },
+  {
+    "id": "combo-零成本音乐视频",
+    "title": "零成本音乐视频",
+    "description": "Stable Audio 3.0（BGM）→ 剪映（出片）= 原创配乐零版权风险",
+    "tool_chain": "Stable Audio 3.0（BGM）→ 剪映（出片）= 原创配乐零版权风险",
+    "use_case": "video",
+    "time_saved": "",
+    "cost_summary": "",
+    "date_updated": "2026-05-25"
+  }
+]

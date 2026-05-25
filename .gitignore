@@ -1,0 +1,21 @@
+# Environment - contains API keys, NEVER commit
+.env
+.env.local
+.env.production
+
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Data files ARE committed — they are the site's content store
