@@ -758,12 +758,13 @@
     "shortcomings": "",
     "pricing_tier": "completely_free",
     "pricing_detail": "",
-    "china_accessible": true,
+    "china_accessible": false,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
     "url": "https://chatgpt.com",
     "tags": [
-      "免费"
+      "免费",
+      "需梯子"
     ],
     "complementary_tools": [],
     "related_combinations": [],
@@ -809,12 +810,13 @@
     "shortcomings": "",
     "pricing_tier": "freemium",
     "pricing_detail": "",
-    "china_accessible": true,
+    "china_accessible": false,
     "beginner_friendly": true,
     "ecommerce_relevant": false,
     "url": "https://chatgpt.com",
     "tags": [
-      "免费"
+      "免费",
+      "需梯子"
     ],
     "complementary_tools": [],
     "related_combinations": [],
