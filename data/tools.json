@@ -945,5 +945,35 @@
     "related_combinations": [],
     "date_added": "2026-05-25",
     "date_updated": "2026-05-25"
+  },
+  {
+    "id": "tool-landscapioai",
+    "slug": "landscapioai",
+    "name": "LandscapioAI",
+    "category": "design",
+    "description": "AI landscape design platform that turns garden and yard photos into realistic landscaping concepts and outdoor redesign ideas.",
+    "description_short": "AI landscape design platform for realistic garden and yard redesign concepts.",
+    "features": [
+      "AI landscape design from photos",
+      "Realistic outdoor redesign concepts",
+      "Garden and yard inspiration for homeowners and professionals"
+    ],
+    "shortcomings": "",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": false,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "https://www.landscapioai.com/",
+    "tags": [
+      "AI design",
+      "landscape design",
+      "garden design",
+      "outdoor redesign"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-05-28",
+    "date_updated": "2026-05-28"
   }
 ]
