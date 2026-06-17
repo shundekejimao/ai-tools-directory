@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: mianshi-lianbingchang
+    runtime: python
+    repo: https://github.com/shundekejimao/ai-tools-directory
+    branch: ai-interview
+    rootDir: ai-interview
+    plan: free
+    region: singapore
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DEEPSEEK_API_KEY
+        sync: false
