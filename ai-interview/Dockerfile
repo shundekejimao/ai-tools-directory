@@ -14,8 +14,8 @@ COPY frontend/ ./frontend/
 
 WORKDIR /app/backend
 
-# 暴露端口
-EXPOSE 8000
+# 暴露HF Spaces端口
+EXPOSE 7860
 
-# 启动命令
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# 启动命令 - 使用7860端口
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
