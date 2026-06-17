@@ -1151,6 +1151,46 @@ async def text_to_speech(req: TTSRequest):
     except Exception as e:
         return JSONResponse({"error": f"语音合成失败: {str(e)}"}, status_code=500)
 
+@app.get("/api/speech/tts")
+async def text_to_speech_get(text: str = "", voice: str = DEFAULT_TTS_VOICE):
+    """GET方式TTS，前端可直接用<audio>标签播放"""
+    import re as _re
+    text = text.strip()[:500]
+    if not text:
+        return JSONResponse({"error": "文本为空"}, status_code=400)
+
+    # 清理markdown
+    clean = text
+    for pattern, repl in [
+        (r'#{1,6}\s', ''), (r'\*\*(.+?)\*\*', r'\1'),
+        (r'\*(.+?)\*', r'\1'), (r'^[-*]\s', ''),
+        (r'^\d+\.\s', ''), (r'\n+', '。'),
+    ]:
+        clean = _re.sub(pattern, repl, clean, flags=_re.MULTILINE)
+
+    voice_name = TTS_VOICES.get(voice, TTS_VOICES[DEFAULT_TTS_VOICE])
+    cache_key = hashlib.md5(f"{clean}_{voice_name}".encode()).hexdigest()
+    cache_path = TTS_CACHE_DIR / f"{cache_key}.mp3"
+
+    if cache_path.exists() and cache_path.stat().st_size > 0:
+        return FileResponse(
+            str(cache_path), media_type="audio/mpeg",
+            filename=f"tts_{cache_key}.mp3",
+            headers={"Cache-Control": "public, max-age=86400"}
+        )
+
+    communicate = edge_tts.Communicate(clean, voice_name)
+    await communicate.save(str(cache_path))
+
+    if not cache_path.exists() or cache_path.stat().st_size < 100:
+        return JSONResponse({"error": "音频生成失败"}, status_code=500)
+
+    return FileResponse(
+        str(cache_path), media_type="audio/mpeg",
+        filename=f"tts_{cache_key}.mp3",
+        headers={"Cache-Control": "public, max-age=86400"}
+    )
+
 @app.get("/api/speech/voices")
 async def list_tts_voices():
     """返回可用的TTS语音列表"""

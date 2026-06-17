@@ -14,7 +14,7 @@ let interviewState = {
     isActive: false
 };
 
-// ============ Voice / TTS (服务器端) ============
+// ============ Voice / TTS (服务器端，兼容所有浏览器) ============
 let autoSpeak = false;       // auto-read AI replies
 let currentAudio = null;     // currently playing audio element
 let isRecording = false;     // voice input active
@@ -39,44 +39,50 @@ function stopAllAudio() {
     document.querySelectorAll('.bubble-speak.speaking').forEach(b => b.classList.remove('speaking'));
 }
 
-async function speakText(text) {
-    if (!autoSpeak) return;
-    stopAllAudio();
-    if (!text || !text.trim()) return;
-
-    try {
-        const resp = await fetch(`${API_BASE}/api/speech/tts`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text: text.trim().substring(0, 500) })
-        });
-
-        if (!resp.ok) {
-            console.warn('TTS request failed:', resp.status);
-            return;
-        }
-
-        const blob = await resp.blob();
-        const url = URL.createObjectURL(blob);
-        const audio = new Audio(url);
-        currentAudio = audio;
-        audio.onended = () => {
-            URL.revokeObjectURL(url);
-            currentAudio = null;
-        };
-        audio.onerror = () => {
-            URL.revokeObjectURL(url);
-            currentAudio = null;
-        };
-        audio.play().catch(e => console.warn('Audio play failed:', e));
-    } catch (err) {
-        console.warn('TTS error:', err);
-    }
+function ttsUrl(text) {
+    // 用GET请求直接获取音频，兼容性最好
+    return `${API_BASE}/api/speech/tts?text=${encodeURIComponent(text.trim().substring(0, 500))}`;
 }
 
-async function speakBubble(el) {
-    const text = el.closest('.chat-bubble').querySelector('.bubble-inner')?.textContent || '';
-    if (!text) return;
+function playAudio(url, onEnd, onError) {
+    stopAllAudio();
+    var audio = new Audio();
+    audio.preload = 'auto';
+    audio.src = url;
+    currentAudio = audio;
+
+    audio.onended = function() {
+        currentAudio = null;
+        if (onEnd) onEnd();
+    };
+    audio.onerror = function() {
+        currentAudio = null;
+        if (onError) onError();
+    };
+
+    // 尝试播放，处理自动播放限制
+    var playPromise = audio.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(function(e) {
+            console.warn('Autoplay blocked, audio needs user interaction:', e);
+            // 自动播放被阻止时，不清理audio，保留给用户点击
+            if (onError) onError();
+        });
+    }
+    return audio;
+}
+
+function speakText(text) {
+    if (!autoSpeak) return;
+    if (!text || !text.trim()) return;
+    playAudio(ttsUrl(text), null, null);
+}
+
+function speakBubble(el) {
+    var bubbleInner = el.closest('.chat-bubble').querySelector('.bubble-inner');
+    if (!bubbleInner) return;
+    var text = bubbleInner.textContent || '';
+    if (!text || !text.trim()) return;
 
     // Toggle off if same bubble is speaking
     if (currentAudio && el.classList.contains('speaking')) {
@@ -84,42 +90,12 @@ async function speakBubble(el) {
         return;
     }
 
-    stopAllAudio();
     el.classList.add('speaking');
-
-    try {
-        const resp = await fetch(`${API_BASE}/api/speech/tts`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text: text.trim().substring(0, 500) })
-        });
-
-        if (!resp.ok) {
-            el.classList.remove('speaking');
-            return;
-        }
-
-        const blob = await resp.blob();
-        const url = URL.createObjectURL(blob);
-        const audio = new Audio(url);
-        currentAudio = audio;
-        audio.onended = () => {
-            URL.revokeObjectURL(url);
-            el.classList.remove('speaking');
-            currentAudio = null;
-        };
-        audio.onerror = () => {
-            URL.revokeObjectURL(url);
-            el.classList.remove('speaking');
-            currentAudio = null;
-        };
-        audio.play().catch(e => {
-            el.classList.remove('speaking');
-        });
-    } catch (err) {
-        el.classList.remove('speaking');
-        console.warn('TTS error:', err);
-    }
+    playAudio(
+        ttsUrl(text),
+        function() { el.classList.remove('speaking'); },
+        function() { el.classList.remove('speaking'); }
+    );
 }
 
 // ============ Voice Input (STT) ============
