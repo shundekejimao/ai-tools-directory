@@ -2,7 +2,7 @@
 AI面试官 - 后端API服务
 使用DeepSeek API
 """
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -12,6 +12,8 @@ import httpx
 import json
 import time
 import os
+import subprocess
+import tempfile
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -1075,6 +1077,91 @@ async def mom_friendly_jobs():
     mom_jobs.sort(key=lambda x: x["difficulty_score"])
 
     return {"jobs": mom_jobs}
+
+# ============ 语音识别 ============
+
+@app.post("/api/speech/recognize")
+async def recognize_speech(audio: UploadFile = File(...)):
+    """接收录音文件，使用Google免费语音识别API转文字"""
+    try:
+        # Read audio data
+        audio_data = await audio.read()
+        if len(audio_data) < 100:
+            return {"text": "", "error": "录音太短，请重试"}
+
+        # Save to temp file
+        with tempfile.NamedTemporaryFile(suffix=".webm", delete=False) as tmp_in:
+            tmp_in.write(audio_data)
+            tmp_in_path = tmp_in.name
+
+        tmp_out_path = tmp_in_path.replace(".webm", ".flac")
+
+        # Convert to FLAC 16kHz mono using ffmpeg
+        result = subprocess.run(
+            ["ffmpeg", "-i", tmp_in_path, "-ar", "16000", "-ac", "1",
+             "-f", "flac", tmp_out_path, "-y"],
+            capture_output=True, timeout=10
+        )
+
+        if not os.path.exists(tmp_out_path) or os.path.getsize(tmp_out_path) < 100:
+            # Cleanup
+            for p in [tmp_in_path, tmp_out_path]:
+                try: os.unlink(p)
+                except: pass
+            return {"text": "", "error": "音频格式转换失败"}
+
+        # Read FLAC data
+        with open(tmp_out_path, "rb") as f:
+            flac_data = f.read()
+
+        # Call Google Speech API (free, no key needed for basic usage)
+        # This is the same endpoint Chrome uses internally
+        url = "https://www.google.com/speech-api/v2/recognize?output=json&lang=zh-CN&pfilter=0&key=AIzaSyBOti4mI-6S4g4M-0i1R3R-FeHFfCw_9J0"
+
+        async with httpx.AsyncClient(timeout=15.0) as client:
+            response = await client.post(
+                url,
+                content=flac_data,
+                headers={"Content-Type": "audio/x-flac; rate=16000"}
+            )
+
+        # Cleanup temp files
+        for p in [tmp_in_path, tmp_out_path]:
+            try: os.unlink(p)
+            except: pass
+
+        if response.status_code != 200:
+            return {"text": "", "error": f"语音识别服务错误({response.status_code})"}
+
+        # Parse Google's response
+        # Response format: multiple JSON lines, each starting with result index
+        text = ""
+        for line in response.text.strip().split("\n"):
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                data = json.loads(line)
+                results = data.get("result", [])
+                for r in results:
+                    alternatives = r.get("alternative", [])
+                    for alt in alternatives:
+                        t = alt.get("transcript", "")
+                        if t:
+                            text = t
+                            break
+            except json.JSONDecodeError:
+                continue
+
+        if not text:
+            return {"text": "", "error": "没有识别到语音，请靠近麦克风再说一次"}
+
+        return {"text": text, "error": ""}
+
+    except subprocess.TimeoutExpired:
+        return {"text": "", "error": "音频处理超时，请缩短录音时间"}
+    except Exception as e:
+        return {"text": "", "error": f"识别失败: {str(e)}"}
 
 # ============ 静态文件托管（前端） ============
 

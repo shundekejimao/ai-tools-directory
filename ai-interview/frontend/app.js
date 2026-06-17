@@ -91,17 +91,26 @@ function speakBubble(el) {
 }
 
 // ============ Voice Input (STT) ============
-function toggleVoiceInput() {
-    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-        alert('你的浏览器暂不支持语音输入，请使用Chrome浏览器');
-        return;
-    }
+let mediaRecorder = null;
+let audioChunks = [];
 
+function toggleVoiceInput() {
     if (isRecording) {
         stopVoiceInput();
         return;
     }
 
+    // Try native SpeechRecognition first (Chrome)
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        startNativeSpeechInput();
+        return;
+    }
+
+    // Fallback: use MediaRecorder + backend ASR (works on Huawei browser)
+    startMediaRecorderInput();
+}
+
+function startNativeSpeechInput() {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     recognition = new SpeechRecognition();
     recognition.lang = 'zh-CN';
@@ -130,7 +139,6 @@ function toggleVoiceInput() {
 
     recognition.onend = () => {
         stopVoiceInput();
-        // Auto-send if we got text
         if (input.value.trim()) {
             setTimeout(() => sendMessage(), 300);
         }
@@ -147,16 +155,88 @@ function toggleVoiceInput() {
     recognition.start();
 }
 
+function startMediaRecorderInput() {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+            isRecording = true;
+            const btn = document.getElementById('voiceRecordBtn');
+            const input = document.getElementById('chatInput');
+            btn.classList.add('recording');
+            input.placeholder = '正在录音，再点一次结束...';
+
+            audioChunks = [];
+            mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable = (e) => {
+                if (e.data.size > 0) audioChunks.push(e.data);
+            };
+
+            mediaRecorder.onstop = async () => {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                stream.getTracks().forEach(t => t.stop());
+
+                isRecording = false;
+                btn.classList.remove('recording');
+                input.placeholder = '语音识别中...';
+
+                try {
+                    const formData = new FormData();
+                    formData.append('audio', audioBlob, 'recording.webm');
+
+                    const resp = await fetch(`${API_BASE}/api/speech/recognize`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const result = await resp.json();
+
+                    if (result.text) {
+                        input.value = result.text;
+                        input.style.height = 'auto';
+                        input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+                        setTimeout(() => sendMessage(), 300);
+                    } else {
+                        alert(result.error || '语音识别失败，请重试');
+                    }
+                } catch (err) {
+                    console.error('Speech recognition error:', err);
+                    alert('语音识别服务连接失败');
+                }
+
+                input.placeholder = '输入或语音说出你的回答...';
+            };
+
+            mediaRecorder.start();
+        })
+        .catch(err => {
+            console.error('Microphone error:', err);
+            if (err.name === 'NotAllowedError') {
+                alert('请允许麦克风权限以使用语音输入');
+            } else {
+                alert('无法访问麦克风，请检查浏览器设置');
+            }
+        });
+}
+
 function stopVoiceInput() {
     isRecording = false;
     const btn = document.getElementById('voiceRecordBtn');
     const input = document.getElementById('chatInput');
     if (btn) btn.classList.remove('recording');
     if (input) input.placeholder = '输入或语音说出你的回答...';
+
+    // Stop native recognition
     if (recognition) {
         try { recognition.stop(); } catch(e) {}
         recognition = null;
     }
+
+    // Stop MediaRecorder
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+        try { mediaRecorder.stop(); } catch(e) {}
+        // mediaRecorder.onstop will handle the rest
+        return; // Don't set mediaRecorder to null here
+    }
+    mediaRecorder = null;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
