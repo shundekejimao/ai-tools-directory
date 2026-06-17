@@ -28,18 +28,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 导航切换
 function initNavigation() {
-    document.querySelectorAll('.nav-item').forEach(item => {
+    document.querySelectorAll('.tab-item').forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
             const tab = item.dataset.tab;
 
-            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            document.querySelectorAll('.tab-item').forEach(i => i.classList.remove('active'));
             item.classList.add('active');
 
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.getElementById(`tab-${tab}`).classList.add('active');
         });
     });
+}
+
+// 子页面切换
+function showSubTab(name) {
+    document.querySelectorAll('.sub-tab').forEach(s => s.style.display = 'none');
+    const el = document.getElementById(`subTab-${name}`);
+    if (el) el.style.display = 'block';
+}
+
+function hideSubTab() {
+    document.querySelectorAll('.sub-tab').forEach(s => s.style.display = 'none');
 }
 
 // 键盘快捷键
