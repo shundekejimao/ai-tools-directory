@@ -1,0 +1,16 @@
+{
+  "name": "ai-interviewer",
+  "services": {
+    "backend": {
+      "root": ".",
+      "build": {
+        "dockerfile": "Dockerfile"
+      },
+      "port": 8000,
+      "env": {
+        "DEEPSEEK_API_KEY": "",
+        "DEEPSEEK_BASE_URL": "https://api.deepseek.com/v1"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+name: ai-interviewer
+services:
+  backend:
+    port: 8000
+    root: backend
+    build:
+      dockerfile: Dockerfile
+    env:
+      - DEEPSEEK_API_KEY
+    healthcheck:
+      path: /docs
+      interval: 30
+      timeout: 10
+
+  frontend:
+    port: 3000
+    root: frontend
+    build:
+      command: python3 -m http.server 3000
+    healthcheck:
+      path: /
+      interval: 30
+      timeout: 10
