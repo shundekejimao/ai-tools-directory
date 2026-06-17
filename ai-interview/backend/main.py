@@ -1078,6 +1078,88 @@ async def mom_friendly_jobs():
 
     return {"jobs": mom_jobs}
 
+# ============ 语音合成 (TTS) ============
+
+import edge_tts
+import hashlib
+
+# TTS音频缓存目录
+TTS_CACHE_DIR = Path(__file__).parent.parent / "tts_cache"
+TTS_CACHE_DIR.mkdir(exist_ok=True)
+
+# 中文女声列表（edge-tts免费）
+TTS_VOICES = {
+    "xiaoxiao": "zh-CN-XiaoxiaoNeural",    # 活泼女声
+    "xiaoyi": "zh-CN-XiaoyiNeural",         # 温柔女声
+    "yunjian": "zh-CN-YunjianNeural",        # 沉稳男声
+    "yunxi": "zh-CN-YunxiNeural",            # 阳光男声
+}
+DEFAULT_TTS_VOICE = "xiaoxiao"
+
+class TTSRequest(BaseModel):
+    """TTS请求"""
+    text: str
+    voice: str = DEFAULT_TTS_VOICE
+
+@app.post("/api/speech/tts")
+async def text_to_speech(req: TTSRequest):
+    """用edge-tts生成语音，返回MP3音频文件"""
+    try:
+        # 限制文本长度
+        text = req.text.strip()[:500]
+        if not text:
+            return JSONResponse({"error": "文本为空"}, status_code=400)
+
+        # 清理markdown格式
+        clean = text
+        for pattern, repl in [
+            (r'#{1,6}\s', ''), (r'\*\*(.+?)\*\*', r'\1'),
+            (r'\*(.+?)\*', r'\1'), (r'^[-*]\s', '',),
+            (r'^\d+\.\s', ''), (r'\n+', '。'),
+        ]:
+            import re
+            clean = re.sub(pattern, repl, clean, flags=re.MULTILINE)
+
+        # 用文本hash做缓存key
+        voice_name = TTS_VOICES.get(req.voice, TTS_VOICES[DEFAULT_TTS_VOICE])
+        cache_key = hashlib.md5(f"{clean}_{voice_name}".encode()).hexdigest()
+        cache_path = TTS_CACHE_DIR / f"{cache_key}.mp3"
+
+        # 缓存命中直接返回
+        if cache_path.exists() and cache_path.stat().st_size > 0:
+            return FileResponse(
+                str(cache_path),
+                media_type="audio/mpeg",
+                filename=f"tts_{cache_key}.mp3",
+                headers={"Cache-Control": "public, max-age=86400"}
+            )
+
+        # 生成音频
+        communicate = edge_tts.Communicate(clean, voice_name)
+        await communicate.save(str(cache_path))
+
+        if not cache_path.exists() or cache_path.stat().st_size < 100:
+            return JSONResponse({"error": "音频生成失败"}, status_code=500)
+
+        return FileResponse(
+            str(cache_path),
+            media_type="audio/mpeg",
+            filename=f"tts_{cache_key}.mp3",
+            headers={"Cache-Control": "public, max-age=86400"}
+        )
+
+    except Exception as e:
+        return JSONResponse({"error": f"语音合成失败: {str(e)}"}, status_code=500)
+
+@app.get("/api/speech/voices")
+async def list_tts_voices():
+    """返回可用的TTS语音列表"""
+    return {"voices": [
+        {"id": k, "name": v.replace("zh-CN-", "").replace("Neural", ""),
+         "full_name": v}
+        for k, v in TTS_VOICES.items()
+    ]}
+
 # ============ 语音识别 ============
 
 @app.post("/api/speech/recognize")

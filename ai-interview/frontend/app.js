@@ -14,80 +14,112 @@ let interviewState = {
     isActive: false
 };
 
-// ============ Voice / TTS ============
+// ============ Voice / TTS (服务器端) ============
 let autoSpeak = false;       // auto-read AI replies
-let currentUtterance = null; // currently speaking utterance
+let currentAudio = null;     // currently playing audio element
 let isRecording = false;     // voice input active
-let recognition = null;      // SpeechRecognition instance
+let recognition = null;      // SpeechRecognition instance (Chrome only)
 
 function toggleAutoSpeak() {
     autoSpeak = !autoSpeak;
     const btn = document.getElementById('voiceToggle');
     if (btn) btn.classList.toggle('active', autoSpeak);
-    if (!autoSpeak && currentUtterance) {
-        speechSynthesis.cancel();
-        currentUtterance = null;
+    if (!autoSpeak && currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
     }
 }
 
-function speakText(text) {
-    if (!autoSpeak || !window.speechSynthesis) return;
-    // Cancel previous
-    speechSynthesis.cancel();
-    // Clean markdown for speech
-    const cleanText = text
-        .replace(/#{1,6}\s/g, '')
-        .replace(/\*\*(.+?)\*\*/g, '$1')
-        .replace(/\*(.+?)\*/g, '$1')
-        .replace(/^[-*]\s/gm, '')
-        .replace(/^\d+\.\s/gm, '')
-        .replace(/\n+/g, '。')
-        .replace(/#{1,6}\s/g, '');
-
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = 'zh-CN';
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-    // Try to find a Chinese voice
-    const voices = speechSynthesis.getVoices();
-    const zhVoice = voices.find(v => v.lang.startsWith('zh'));
-    if (zhVoice) utterance.voice = zhVoice;
-
-    currentUtterance = utterance;
-    utterance.onend = () => { currentUtterance = null; };
-    speechSynthesis.speak(utterance);
+function stopAllAudio() {
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+    }
+    document.querySelectorAll('.bubble-speak.speaking').forEach(b => b.classList.remove('speaking'));
 }
 
-function speakBubble(el) {
+async function speakText(text) {
+    if (!autoSpeak) return;
+    stopAllAudio();
+    if (!text || !text.trim()) return;
+
+    try {
+        const resp = await fetch(`${API_BASE}/api/speech/tts`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: text.trim().substring(0, 500) })
+        });
+
+        if (!resp.ok) {
+            console.warn('TTS request failed:', resp.status);
+            return;
+        }
+
+        const blob = await resp.blob();
+        const url = URL.createObjectURL(blob);
+        const audio = new Audio(url);
+        currentAudio = audio;
+        audio.onended = () => {
+            URL.revokeObjectURL(url);
+            currentAudio = null;
+        };
+        audio.onerror = () => {
+            URL.revokeObjectURL(url);
+            currentAudio = null;
+        };
+        audio.play().catch(e => console.warn('Audio play failed:', e));
+    } catch (err) {
+        console.warn('TTS error:', err);
+    }
+}
+
+async function speakBubble(el) {
     const text = el.closest('.chat-bubble').querySelector('.bubble-inner')?.textContent || '';
     if (!text) return;
+
     // Toggle off if same bubble is speaking
-    if (currentUtterance && el.classList.contains('speaking')) {
-        speechSynthesis.cancel();
-        el.classList.remove('speaking');
-        currentUtterance = null;
+    if (currentAudio && el.classList.contains('speaking')) {
+        stopAllAudio();
         return;
     }
-    speechSynthesis.cancel();
-    el.classList.add('speaking');
-    const cleanText = text
-        .replace(/#{1,6}\s/g, '')
-        .replace(/\*\*(.+?)\*\*/g, '$1')
-        .replace(/\*(.+?)\*/g, '$1')
-        .replace(/^[-*]\s/gm, '')
-        .replace(/^\d+\.\s/gm, '')
-        .replace(/\n+/g, '。');
 
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = 'zh-CN';
-    utterance.rate = 1.0;
-    const voices = speechSynthesis.getVoices();
-    const zhVoice = voices.find(v => v.lang.startsWith('zh'));
-    if (zhVoice) utterance.voice = zhVoice;
-    currentUtterance = utterance;
-    utterance.onend = () => { el.classList.remove('speaking'); currentUtterance = null; };
-    utterance.onerror = () => { el.classList.remove('speaking'); currentUtterance = null; };
-    speechSynthesis.speak(utterance);
+    stopAllAudio();
+    el.classList.add('speaking');
+
+    try {
+        const resp = await fetch(`${API_BASE}/api/speech/tts`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: text.trim().substring(0, 500) })
+        });
+
+        if (!resp.ok) {
+            el.classList.remove('speaking');
+            return;
+        }
+
+        const blob = await resp.blob();
+        const url = URL.createObjectURL(blob);
+        const audio = new Audio(url);
+        currentAudio = audio;
+        audio.onended = () => {
+            URL.revokeObjectURL(url);
+            el.classList.remove('speaking');
+            currentAudio = null;
+        };
+        audio.onerror = () => {
+            URL.revokeObjectURL(url);
+            el.classList.remove('speaking');
+            currentAudio = null;
+        };
+        audio.play().catch(e => {
+            el.classList.remove('speaking');
+        });
+    } catch (err) {
+        el.classList.remove('speaking');
+        console.warn('TTS error:', err);
+    }
 }
 
 // ============ Voice Input (STT) ============
@@ -436,7 +468,7 @@ async function sendMessage() {
 
 async function endInterview() {
     // Stop any voice
-    if (currentUtterance) { speechSynthesis.cancel(); currentUtterance = null; }
+    stopAllAudio();
     stopVoiceInput();
     
     if (!interviewState.isActive) {
