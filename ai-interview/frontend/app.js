@@ -2,12 +2,10 @@
  * 面试练兵场 - 前端核心逻辑
  */
 
-// API基础URL
 const API_BASE = window.location.hostname === 'localhost'
     ? 'http://localhost:8000'
     : '';
 
-// 面试状态
 let interviewState = {
     jobType: '',
     difficulty: 'medium',
@@ -16,66 +14,55 @@ let interviewState = {
     isActive: false
 };
 
-// ============ 页面初始化 ============
-
 document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     loadJobs();
-    loadTraps();
     loadMomJobs();
-    initKeyboardShortcuts();
+    initChatInput();
 });
 
-// 导航切换
 function initNavigation() {
     document.querySelectorAll('.tab-item').forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
             const tab = item.dataset.tab;
-
-            document.querySelectorAll('.tab-item').forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            document.getElementById(`tab-${tab}`).classList.add('active');
+            switchTab(tab);
         });
     });
 }
 
-// 子页面切换
-function showSubTab(name) {
-    document.querySelectorAll('.sub-tab').forEach(s => s.style.display = 'none');
-    const el = document.getElementById(`subTab-${name}`);
-    if (el) el.style.display = 'block';
+function switchTab(tab) {
+    document.querySelectorAll('.tab-item').forEach(i => i.classList.remove('active'));
+    const targetTabItem = document.querySelector(`.tab-item[data-tab="${tab}"]`);
+    if (targetTabItem) targetTabItem.classList.add('active');
+
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    const targetContent = document.getElementById(`tab-${tab}`);
+    if (targetContent) targetContent.classList.add('active');
+
+    document.querySelector('.main-content').scrollTop = 0;
 }
 
-function hideSubTab() {
-    document.querySelectorAll('.sub-tab').forEach(s => s.style.display = 'none');
+function initChatInput() {
+    const input = document.getElementById('chatInput');
+    if (input) {
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+        // 自动调整高度
+        input.addEventListener('input', () => {
+            input.style.height = 'auto';
+            input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+        });
+    }
 }
-
-// 键盘快捷键
-function initKeyboardShortcuts() {
-    document.getElementById('chatInput')?.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            sendAnswer();
-        }
-    });
-}
-
-// 关闭欢迎横幅
-function closeBanner() {
-    const banner = document.getElementById('welcomeBanner');
-    banner.style.opacity = '0';
-    banner.style.transform = 'translateY(-100%)';
-    setTimeout(() => banner.style.display = 'none', 300);
-}
-
-// ============ 工具函数 ============
 
 function showLoading(text = 'AI正在思考中...') {
     const overlay = document.getElementById('loadingOverlay');
-    overlay.querySelector('.loading-text').textContent = text;
+    document.getElementById('loadingText').textContent = text;
     overlay.style.display = 'flex';
 }
 
@@ -90,12 +77,10 @@ async function apiCall(endpoint, data = {}) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
-
         if (!response.ok) {
             const error = await response.json();
             throw new Error(error.detail || '请求失败');
         }
-
         return await response.json();
     } catch (error) {
         console.error('API Error:', error);
@@ -103,10 +88,8 @@ async function apiCall(endpoint, data = {}) {
     }
 }
 
-// Markdown渲染
 function renderMarkdown(text) {
     if (!text) return '';
-
     let html = text
         .replace(/^### (.+)$/gm, '<h3>$1</h3>')
         .replace(/^## (.+)$/gm, '<h2>$1</h2>')
@@ -118,12 +101,8 @@ function renderMarkdown(text) {
         .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
         .replace(/\n\n/g, '</p><p>')
         .replace(/\n/g, '<br>');
-
-    html = html.replace(/(<li>.*<\/li>)/gs, (match) => {
-        return '<ul>' + match + '</ul>';
-    });
+    html = html.replace(/(<li>.*<\/li>)/gs, (match) => '<ul>' + match + '</ul>');
     html = html.replace(/<\/ul>\s*<ul>/g, '');
-
     return '<p>' + html + '</p>';
 }
 
@@ -131,20 +110,10 @@ function renderMarkdown(text) {
 
 async function startInterview() {
     const jobType = document.getElementById('interviewJobType').value;
-    if (!jobType) {
-        alert('请选择面试岗位');
-        return;
-    }
+    if (!jobType) { alert('请先选择面试岗位'); return; }
 
     const difficulty = document.querySelector('input[name="difficulty"]:checked').value;
-
-    interviewState = {
-        jobType,
-        difficulty,
-        history: [],
-        questionCount: 0,
-        isActive: true
-    };
+    interviewState = { jobType, difficulty, history: [], questionCount: 0, isActive: true };
 
     showLoading('面试官正在准备...');
 
@@ -157,121 +126,134 @@ async function startInterview() {
         });
 
         hideLoading();
-
         document.getElementById('interviewSetup').style.display = 'none';
         document.getElementById('interviewChat').style.display = 'flex';
-        document.getElementById('chatTitle').textContent = `${jobType} - 模拟面试`;
+        document.getElementById('chatTitle').textContent = jobType;
 
         document.getElementById('chatMessages').innerHTML = '';
-        addChatMessage('interviewer', result.response);
+        addChatBubble('ai', '面试官', result.response);
 
         interviewState.history.push({ role: 'assistant', content: result.response });
-        interviewState.questionCount = result.question_count;
+        interviewState.questionCount = result.question_count || 1;
         updateChatCount();
-
     } catch (error) {
         hideLoading();
         alert('开始面试失败: ' + error.message);
     }
 }
 
-function addChatMessage(role, content) {
-    const messages = document.getElementById('chatMessages');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `chat-message ${role}`;
-
-    const avatar = role === 'interviewer' ? '🤖' : '👤';
-    messageDiv.innerHTML = `
-        <div class="message-avatar">${avatar}</div>
-        <div class="message-content">${renderMarkdown(content)}</div>
+function addChatBubble(role, label, content) {
+    const container = document.getElementById('chatMessages');
+    const bubble = document.createElement('div');
+    bubble.className = `chat-bubble ${role}`;
+    bubble.innerHTML = `
+        <div class="bubble-label">${label}</div>
+        <div class="bubble-inner">${renderMarkdown(content)}</div>
     `;
-
-    messages.appendChild(messageDiv);
-    messages.scrollTop = messages.scrollHeight;
+    container.appendChild(bubble);
+    container.scrollTop = container.scrollHeight;
 }
 
 function updateChatCount() {
-    document.getElementById('chatCount').textContent = `第 ${interviewState.questionCount} 题`;
+    document.getElementById('chatCount').textContent = `第${interviewState.questionCount}题`;
 }
 
-async function sendAnswer() {
+async function sendMessage() {
     const input = document.getElementById('chatInput');
-    const answer = input.value.trim();
-
-    if (!answer || !interviewState.isActive) return;
+    const text = input.value.trim();
+    if (!text || !interviewState.isActive) return;
 
     input.value = '';
-    addChatMessage('user', answer);
+    input.style.height = 'auto';
+    addChatBubble('user', '我', text);
+    interviewState.history.push({ role: 'user', content: text });
 
-    interviewState.history.push({ role: 'user', content: answer });
-
-    showLoading('面试官正在思考...');
+    showLoading('面试官思考中...');
 
     try {
-        const result = await apiCall('/api/interview/followup', {
+        const result = await apiCall('/api/interview/chat', {
             job_type: interviewState.jobType,
-            question: answer,
+            question: text,
             history: interviewState.history,
             difficulty: interviewState.difficulty
         });
 
         hideLoading();
-
-        addChatMessage('interviewer', result.response);
+        addChatBubble('ai', '面试官', result.response);
         interviewState.history.push({ role: 'assistant', content: result.response });
-        interviewState.questionCount = result.question_count;
+        interviewState.questionCount = result.question_count || (interviewState.questionCount + 1);
         updateChatCount();
-
-        if (result.is_finished) {
-            showInterviewSummary(result.summary);
-        }
-
     } catch (error) {
         hideLoading();
         alert('发送失败: ' + error.message);
     }
 }
 
-function showInterviewSummary(summary) {
-    interviewState.isActive = false;
-    addChatMessage('interviewer', `🎉 面试结束！\n\n${summary}`);
-}
-
-function endInterview() {
-    if (confirm('确定要结束面试吗？')) {
-        interviewState.isActive = false;
+async function endInterview() {
+    if (!interviewState.isActive) {
+        // 已结束，直接返回
         document.getElementById('interviewSetup').style.display = 'block';
         document.getElementById('interviewChat').style.display = 'none';
-    }
-}
-
-// ============ 岗位攻略 ============
-
-async function getStrategy() {
-    const jobType = document.getElementById('strategyJobType').value;
-    const jdUrl = document.getElementById('strategyJdUrl').value;
-    const jdText = document.getElementById('strategyJdText').value;
-
-    if (!jobType) {
-        alert('请选择岗位');
         return;
     }
 
-    showLoading('正在生成面试攻略...');
+    if (!confirm('确定要结束面试吗？')) return;
+
+    interviewState.isActive = false;
+    showLoading('正在生成面试评价...');
 
     try {
-        const result = await apiCall('/api/strategy/generate', {
-            job_type: jobType,
-            jd_url: jdUrl || null,
-            jd_text: jdText || null
+        const result = await apiCall('/api/interview/evaluate', {
+            job_type: interviewState.jobType,
+            question: '请评估这次面试。',
+            history: interviewState.history,
+            difficulty: interviewState.difficulty
         });
 
         hideLoading();
 
+        let evalText = '';
+        if (typeof result.evaluation === 'object') {
+            const ev = result.evaluation;
+            if (ev.raw_response) {
+                evalText = ev.raw_response;
+            } else {
+                evalText = `## 面试评估报告\n\n`;
+                if (ev.total_score) evalText += `**综合评分：${ev.total_score}/10**\n\n`;
+                if (ev.strengths) evalText += `**优势：**\n${ev.strengths.map(s => `- ${s}`).join('\n')}\n\n`;
+                if (ev.weaknesses) evalText += `**不足：**\n${ev.weaknesses.map(s => `- ${s}`).join('\n')}\n\n`;
+                if (ev.suggestions) evalText += `**建议：**\n${ev.suggestions.map(s => `- ${s}`).join('\n')}\n\n`;
+                if (ev.overall_comment) evalText += `**总评：** ${ev.overall_comment}\n`;
+            }
+        } else {
+            evalText = String(result.evaluation);
+        }
+
+        addChatBubble('ai', '评估报告', evalText || '面试已结束，感谢你的参与！');
+
+    } catch (error) {
+        hideLoading();
+        alert('评估失败: ' + error.message);
+    }
+
+    // 让用户看到评估后再点退出回首页
+    interviewState.isActive = false;
+}
+
+// ============ 面试攻略 ============
+
+async function generateStrategy() {
+    const jobType = document.getElementById('strategyJobType').value;
+    if (!jobType) { alert('请选择岗位'); return; }
+
+    showLoading('正在生成面试攻略...');
+
+    try {
+        const result = await apiCall('/api/strategy/generate', { job_type: jobType });
+        hideLoading();
         document.getElementById('strategyResult').style.display = 'block';
         document.getElementById('strategyContent').innerHTML = renderMarkdown(result.strategy);
         document.getElementById('strategyResult').scrollIntoView({ behavior: 'smooth' });
-
     } catch (error) {
         hideLoading();
         alert('生成攻略失败: ' + error.message);
@@ -281,123 +263,86 @@ async function getStrategy() {
 // ============ 简历优化 ============
 
 async function optimizeResume() {
-    const resumeText = document.getElementById('resumeText').value;
-    const targetJob = document.getElementById('resumeJobType').value;
-    const optimizeType = document.getElementById('resumeOptType').value;
+    const jobType = document.getElementById('resumeJobType').value;
+    const content = document.getElementById('resumeContent').value.trim();
+    if (!jobType) { alert('请选择目标岗位'); return; }
+    if (!content) { alert('请输入简历内容'); return; }
 
-    if (!resumeText) {
-        alert('请粘贴简历内容');
-        return;
-    }
-
-    if (!targetJob) {
-        alert('请选择目标岗位');
-        return;
-    }
-
-    showLoading('正在优化简历...');
+    showLoading('正在优化你的简历...');
 
     try {
         const result = await apiCall('/api/resume/optimize', {
-            resume_text: resumeText,
-            target_job: targetJob,
-            optimize_type: optimizeType
+            resume_text: content,
+            target_job: jobType
         });
-
         hideLoading();
-
         document.getElementById('resumeResult').style.display = 'block';
-        document.getElementById('resumeContent').innerHTML = renderMarkdown(result.optimized_resume);
+        document.getElementById('resumeOptimized').innerHTML = renderMarkdown(result.optimized_resume);
         document.getElementById('resumeResult').scrollIntoView({ behavior: 'smooth' });
-
     } catch (error) {
         hideLoading();
-        alert('优化失败: ' + error.message);
+        alert('优化简历失败: ' + error.message);
+    }
+}
+
+// ============ 面试陷阱 ============
+
+async function showTraps() {
+    const jobType = document.getElementById('trapJobType').value;
+    if (!jobType) { alert('请选择岗位'); return; }
+
+    showLoading('正在整理面试陷阱...');
+
+    try {
+        const result = await apiCall('/api/traps/query', { job_type: jobType });
+        hideLoading();
+
+        let trapsText = '## 面试陷阱详细解析\n\n';
+        if (result.traps && typeof result.traps === 'object') {
+            for (const [key, trap] of Object.entries(result.traps)) {
+                if (typeof trap === 'object') {
+                    trapsText += `### ${trap.trap || key}\n`;
+                    trapsText += `**HR的真实意图：** ${trap.analysis || ''}\n\n`;
+                    trapsText += `**应对策略：** ${trap.response_strategy || ''}\n\n`;
+                    trapsText += `**参考回答：** ${trap.sample_response || ''}\n\n---\n\n`;
+                }
+            }
+        }
+        if (result.extra_traps) {
+            trapsText += '\n' + result.extra_traps;
+        }
+
+        document.getElementById('trapResult').style.display = 'block';
+        document.getElementById('trapContent').innerHTML = renderMarkdown(trapsText);
+        document.getElementById('trapResult').scrollIntoView({ behavior: 'smooth' });
+    } catch (error) {
+        hideLoading();
+        alert('获取陷阱失败: ' + error.message);
     }
 }
 
 // ============ 转行攻略 ============
 
-async function getCareerChange() {
-    const currentJob = document.getElementById('careerCurrentJob').value;
-    const targetJob = document.getElementById('careerTargetJob').value;
-    const experienceYears = parseInt(document.getElementById('careerExpYears').value) || 0;
-
-    if (!currentJob) {
-        alert('请输入当前岗位');
-        return;
-    }
-
-    if (!targetJob) {
-        alert('请选择目标岗位');
-        return;
-    }
+async function generateCareerGuide() {
+    const current = document.getElementById('careerCurrent').value.trim();
+    const target = document.getElementById('careerTarget').value;
+    if (!current) { alert('请输入目前的行业'); return; }
+    if (!target) { alert('请选择目标行业'); return; }
 
     showLoading('正在生成转行攻略...');
 
     try {
         const result = await apiCall('/api/career-change/strategy', {
-            current_job: currentJob,
-            target_job: targetJob,
-            experience_years: experienceYears
+            current_job: current,
+            target_job: target
         });
-
         hideLoading();
-
         document.getElementById('careerResult').style.display = 'block';
         document.getElementById('careerContent').innerHTML = renderMarkdown(result.strategy);
         document.getElementById('careerResult').scrollIntoView({ behavior: 'smooth' });
-
     } catch (error) {
         hideLoading();
         alert('生成攻略失败: ' + error.message);
-    }
-}
-
-// ============ 话术陷阱 ============
-
-async function loadTraps() {
-    const jobType = document.getElementById('trapsJobType').value;
-
-    showLoading('正在加载话术陷阱...');
-
-    try {
-        const result = await apiCall('/api/traps/query', {
-            question_type: 'general',
-            job_type: jobType || null
-        });
-
-        hideLoading();
-
-        const container = document.getElementById('trapsList');
-        container.innerHTML = '';
-
-        const traps = [...result.traps];
-        if (result.extra_traps) {
-            traps.push(...result.extra_traps);
-        }
-
-        traps.forEach(trap => {
-            const card = document.createElement('div');
-            card.className = 'trap-card';
-            card.innerHTML = `
-                <div class="trap-header">
-                    <div class="trap-title">${trap.title}</div>
-                    <span class="trap-tag">${trap.category}</span>
-                </div>
-                <div class="trap-question">💬 "${trap.question}"</div>
-                <div class="trap-analysis">${trap.analysis}</div>
-                <div class="trap-response">
-                    <div class="trap-response-title">✅ 聪明应对</div>
-                    <div class="trap-response-text">${trap.smart_response}</div>
-                </div>
-            `;
-            container.appendChild(card);
-        });
-
-    } catch (error) {
-        hideLoading();
-        alert('加载失败: ' + error.message);
     }
 }
 
@@ -407,27 +352,21 @@ async function loadJobs() {
     try {
         const response = await fetch(`${API_BASE}/api/jobs/list`);
         const data = await response.json();
-
         const container = document.getElementById('jobsGrid');
-        container.innerHTML = '';
+        if (!container) return;
 
-        data.jobs.forEach(job => {
-            const card = document.createElement('div');
-            card.className = 'job-card';
-            card.innerHTML = `
-                <div class="job-card-header">
+        container.innerHTML = data.jobs.map(job => `
+            <div class="job-card">
+                <div class="job-card-top">
                     <div class="job-card-title">${job.type}</div>
                 </div>
-                <div class="job-card-salary">💰 ${job.salary_range}</div>
-                <div class="job-card-skills">
-                    <span class="skill-tag">${job.core_skills_count}项核心技能</span>
-                    <span class="skill-tag">${job.questions_count}道面试题</span>
+                <div class="job-card-salary">${job.salary_range}</div>
+                <div class="job-card-tags">
+                    <span class="job-tag">${job.core_skills_count}项核心技能</span>
+                    <span class="job-tag">${job.questions_count}道面试题</span>
                 </div>
-                <div class="job-card-path">📈 ${job.career_path}</div>
-            `;
-            container.appendChild(card);
-        });
-
+            </div>
+        `).join('');
     } catch (error) {
         console.error('加载岗位信息失败:', error);
     }
@@ -440,10 +379,7 @@ async function generateMomStrategy() {
     const gapYears = parseInt(document.getElementById('momGapYears').value) || 0;
     const previousJob = document.getElementById('momPreviousJob').value;
 
-    if (!targetJob) {
-        alert('请选择目标岗位');
-        return;
-    }
+    if (!targetJob) { alert('请选择目标岗位'); return; }
 
     showLoading('正在为你制定专属攻略...');
 
@@ -453,21 +389,10 @@ async function generateMomStrategy() {
             gap_years: gapYears,
             previous_job: previousJob || null
         });
-
         hideLoading();
-
         document.getElementById('momResult').style.display = 'block';
-
-        const tipsPreview = document.getElementById('momTipsPreview');
-        if (result.mom_tips && result.mom_tips.length > 0) {
-            tipsPreview.innerHTML = result.mom_tips.map(tip =>
-                `<span class="mom-tip-tag">${tip.substring(0, 20)}...</span>`
-            ).join('');
-        }
-
         document.getElementById('momContent').innerHTML = renderMarkdown(result.strategy);
         document.getElementById('momResult').scrollIntoView({ behavior: 'smooth' });
-
     } catch (error) {
         hideLoading();
         alert('生成攻略失败: ' + error.message);
@@ -478,46 +403,32 @@ async function loadMomJobs() {
     try {
         const response = await fetch(`${API_BASE}/api/mom/jobs`);
         const data = await response.json();
-
         const container = document.getElementById('momJobsGrid');
         if (!container) return;
-
         container.innerHTML = '';
 
-        const difficultyMap = {
-            '低': 'easy',
-            '中等': 'medium',
-            '高': 'hard',
-            '很高': 'hard'
-        };
+        const difficultyMap = { '低': 'easy', '中等': 'medium', '高': 'hard', '很高': 'hard' };
 
         for (const job of data.jobs) {
             const difficultyClass = difficultyMap[job.difficulty] || 'medium';
-
             const card = document.createElement('div');
-            card.className = `mom-job-card ${difficultyClass}`;
+            card.className = `job-card ${difficultyClass}`;
             card.innerHTML = `
-                <div class="mom-job-card-header">
-                    <div class="mom-job-card-title">${job.type}</div>
-                    <span class="mom-job-card-difficulty">转行难度: ${job.difficulty}</span>
+                <div class="job-card-top">
+                    <div class="job-card-title">${job.type}</div>
+                    <span class="job-card-badge">难度: ${job.difficulty}</span>
                 </div>
-                <div class="mom-job-card-salary">💰 ${job.salary_range}</div>
-                <div class="mom-job-card-skills">
-                    ${job.transferable_skills.map(skill =>
-                        `<span class="mom-skill-tag">${skill}</span>`
-                    ).join('')}
+                <div class="job-card-salary">${job.salary_range}</div>
+                <div class="job-card-tags">
+                    ${(job.transferable_skills || []).map(skill => `<span class="job-tag">${skill}</span>`).join('')}
                 </div>
-                <div class="mom-job-card-action">点击生成攻略 →</div>
             `;
-
+            card.style.cursor = 'pointer';
             card.addEventListener('click', () => {
                 document.getElementById('momTargetJob').value = job.type;
-                document.getElementById('momResult').scrollIntoView({ behavior: 'smooth' });
             });
-
             container.appendChild(card);
         }
-
     } catch (error) {
         console.error('加载宝妈岗位推荐失败:', error);
         showStaticMomJobs();
@@ -537,26 +448,20 @@ function showStaticMomJobs() {
     const container = document.getElementById('momJobsGrid');
     if (!container) return;
 
-    const difficultyMap = {
-        '低': 'easy',
-        '中等': 'medium',
-        '高': 'hard',
-        '很高': 'hard'
-    };
+    const difficultyMap = { '低': 'easy', '中等': 'medium', '高': 'hard', '很高': 'hard' };
 
     container.innerHTML = jobs.map(job => {
         const difficultyClass = difficultyMap[job.difficulty] || 'medium';
         return `
-            <div class="mom-job-card ${difficultyClass}" onclick="document.getElementById('momTargetJob').value='${job.type}';">
-                <div class="mom-job-card-header">
-                    <div class="mom-job-card-title">${job.type}</div>
-                    <span class="mom-job-card-difficulty">转行难度: ${job.difficulty}</span>
+            <div class="job-card ${difficultyClass}">
+                <div class="job-card-top">
+                    <div class="job-card-title">${job.type}</div>
+                    <span class="job-card-badge">难度: ${job.difficulty}</span>
                 </div>
-                <div class="mom-job-card-salary">💰 ${job.salary}</div>
-                <div class="mom-job-card-skills">
-                    ${job.skills.map(skill => `<span class="mom-skill-tag">${skill}</span>`).join('')}
+                <div class="job-card-salary">${job.salary}</div>
+                <div class="job-card-tags">
+                    ${job.skills.map(skill => `<span class="job-tag">${skill}</span>`).join('')}
                 </div>
-                <div class="mom-job-card-action">点击生成攻略 →</div>
             </div>
         `;
     }).join('');

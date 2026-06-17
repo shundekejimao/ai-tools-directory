@@ -2,21 +2,22 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>面试练兵场 - AI模拟面试 · 面试攻略 · 简历优化</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>面试练兵场 - AI模拟面试</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
     <div class="app">
         <!-- 顶部导航栏 -->
         <header class="top-bar">
             <div class="top-bar-left">
-                <span class="logo-icon">⚡</span>
+                <div class="logo-icon">面</div>
                 <span class="logo-text">面试练兵场</span>
             </div>
             <div class="api-status" id="apiStatus">
                 <span class="status-dot"></span>
-                <span class="status-text">AI在线</span>
+                <span>在线</span>
             </div>
         </header>
 
@@ -24,320 +25,296 @@
         <main class="main-content">
             <!-- 模拟面试 -->
             <section class="tab-content active" id="tab-interview">
-                <div class="page-header">
-                    <h2>🎤 AI模拟面试</h2>
-                    <p>选择岗位，AI面试官帮你模拟真实面试</p>
-                </div>
-
                 <div class="interview-setup" id="interviewSetup">
-                    <div class="setup-card">
-                        <div class="setup-card-header">
-                            <span class="setup-step">1</span>
-                            <h3>选择面试岗位</h3>
-                        </div>
-                        <div class="form-group">
-                            <select id="interviewJobType" class="form-select form-select-lg">
-                                <option value="">请选择岗位</option>
-                                <option value="电商运营">🛒 电商运营</option>
-                                <option value="客服">🎧 客服</option>
-                                <option value="销售">💰 销售</option>
-                                <option value="行政">📎 行政</option>
-                                <option value="电子产品认证工程师">🔧 电子产品认证工程师</option>
-                                <option value="结构工程师">⚙️ 结构工程师</option>
-                            </select>
-                        </div>
+                    <div class="hero-banner">
+                        <h2>AI模拟面试</h2>
+                        <p>选岗位 → 开始面试 → AI实时追问 → 获取评估</p>
                     </div>
 
                     <div class="setup-card">
-                        <div class="setup-card-header">
-                            <span class="setup-step">2</span>
-                            <h3>选择面试难度</h3>
-                        </div>
+                        <div class="setup-label">选择面试岗位</div>
+                        <select id="interviewJobType" class="form-select">
+                            <option value="">请选择岗位</option>
+                            <option value="电商运营">📦 电商运营</option>
+                            <option value="客服">🎯 客服</option>
+                            <option value="销售">💰 销售</option>
+                            <option value="行政">📋 行政</option>
+                            <option value="电子产品认证工程师">🔬 电子产品认证工程师</option>
+                            <option value="结构工程师">🏗️ 结构工程师</option>
+                        </select>
+                    </div>
+
+                    <div class="setup-card">
+                        <div class="setup-label">面试难度</div>
                         <div class="difficulty-selector">
-                            <label class="difficulty-option">
+                            <label class="diff-option">
                                 <input type="radio" name="difficulty" value="easy">
-                                <span class="difficulty-label easy">
-                                    <span class="diff-emoji">🌱</span>
-                                    <span class="diff-title">简单</span>
-                                    <span class="diff-desc">初级/入门</span>
+                                <span class="diff-btn easy">
+                                    <span class="diff-icon">🌱</span>
+                                    <span class="diff-name">简单</span>
+                                    <span class="diff-sub">初级入门</span>
                                 </span>
                             </label>
-                            <label class="difficulty-option">
+                            <label class="diff-option">
                                 <input type="radio" name="difficulty" value="medium" checked>
-                                <span class="difficulty-label medium">
-                                    <span class="diff-emoji">🔥</span>
-                                    <span class="diff-title">中等</span>
-                                    <span class="diff-desc">有经验</span>
+                                <span class="diff-btn medium">
+                                    <span class="diff-icon">🔥</span>
+                                    <span class="diff-name">中等</span>
+                                    <span class="diff-sub">有经验</span>
                                 </span>
                             </label>
-                            <label class="difficulty-option">
+                            <label class="diff-option">
                                 <input type="radio" name="difficulty" value="hard">
-                                <span class="difficulty-label hard">
-                                    <span class="diff-emoji">💎</span>
-                                    <span class="diff-title">困难</span>
-                                    <span class="diff-desc">高级/专家</span>
+                                <span class="diff-btn hard">
+                                    <span class="diff-icon">💎</span>
+                                    <span class="diff-name">困难</span>
+                                    <span class="diff-sub">高级专家</span>
                                 </span>
                             </label>
                         </div>
                     </div>
 
-                    <button class="btn btn-primary btn-lg btn-glow" onclick="startInterview()">
-                        🚀 开始模拟面试
+                    <button class="btn-start" onclick="startInterview()">
+                        开始模拟面试
                     </button>
                 </div>
 
-                <div class="interview-chat" id="interviewChat" style="display:none;">
-                    <div class="chat-header">
-                        <div class="chat-avatar">🤖</div>
-                        <div class="chat-info">
-                            <h3 id="chatTitle">模拟面试</h3>
-                            <span class="chat-status">面试官在线</span>
+                <div class="chat-view" id="interviewChat" style="display:none;">
+                    <div class="chat-top">
+                        <button class="chat-back" onclick="endInterview()">← 退出</button>
+                        <div class="chat-top-info">
+                            <span class="chat-top-title" id="chatTitle">模拟面试</span>
+                            <span class="chat-top-badge" id="chatCount">第1题</span>
                         </div>
-                        <div class="chat-actions">
-                            <span class="chat-count" id="chatCount">第1题</span>
-                            <button class="btn btn-end" onclick="endInterview()">结束</button>
-                        </div>
+                        <div class="chat-top-dot"></div>
                     </div>
-                    <div class="chat-messages" id="chatMessages"></div>
-                    <div class="chat-input-area">
-                        <textarea id="chatInput" class="form-textarea chat-textarea" placeholder="输入你的回答... (Enter发送)" rows="2"></textarea>
-                        <button class="btn btn-primary btn-send" onclick="sendAnswer()">发送</button>
+                    <div class="chat-body" id="chatMessages"></div>
+                    <div class="chat-bottom">
+                        <textarea id="chatInput" class="chat-textarea" placeholder="输入你的回答..." rows="1"></textarea>
+                        <button class="chat-send" onclick="sendMessage()">发送</button>
                     </div>
                 </div>
             </section>
 
-            <!-- 岗位攻略 -->
+            <!-- 面试攻略 -->
             <section class="tab-content" id="tab-strategy">
-                <div class="page-header">
-                    <h2>📋 岗位攻略</h2>
-                    <p>针对具体岗位定制面试攻略</p>
+                <div class="section-hero">
+                    <h2>面试攻略</h2>
+                    <p>选岗位，AI帮你梳理常见问题和回答技巧</p>
                 </div>
-                <div class="form-card">
-                    <div class="form-group">
-                        <label>选择岗位</label>
-                        <select id="strategyJobType" class="form-select">
-                            <option value="">请选择岗位</option>
-                            <option value="电商运营">电商运营</option>
-                            <option value="客服">客服</option>
-                            <option value="销售">销售</option>
-                            <option value="行政">行政</option>
-                            <option value="电子产品认证工程师">电子产品认证工程师</option>
-                            <option value="结构工程师">结构工程师</option>
-                        </select>
+                <div class="card">
+                    <div class="form-label">选择岗位</div>
+                    <select id="strategyJobType" class="form-select">
+                        <option value="">请选择岗位</option>
+                        <option value="电商运营">电商运营</option>
+                        <option value="客服">客服</option>
+                        <option value="销售">销售</option>
+                        <option value="行政">行政</option>
+                        <option value="电子产品认证工程师">电子产品认证工程师</option>
+                        <option value="结构工程师">结构工程师</option>
+                    </select>
+                    <div class="form-label" style="margin-top:14px">关注方面</div>
+                    <div class="tag-group">
+                        <label class="tag-check"><input type="checkbox" value="常见问题" checked><span>常见问题</span></label>
+                        <label class="tag-check"><input type="checkbox" value="回答技巧" checked><span>回答技巧</span></label>
+                        <label class="tag-check"><input type="checkbox" value="注意事项"><span>注意事项</span></label>
+                        <label class="tag-check"><input type="checkbox" value="薪资谈判"><span>薪资谈判</span></label>
                     </div>
-                    <div class="form-divider">或者提供具体JD</div>
-                    <div class="form-group">
-                        <label>招聘链接（选填）</label>
-                        <input type="url" id="strategyJdUrl" class="form-input" placeholder="https://...">
-                    </div>
-                    <div class="form-group">
-                        <label>JD内容（选填）</label>
-                        <textarea id="strategyJdText" class="form-textarea" placeholder="粘贴招聘JD内容..." rows="3"></textarea>
-                    </div>
-                    <button class="btn btn-primary btn-lg" onclick="getStrategy()">✨ 生成面试攻略</button>
+                    <button class="btn-action" onclick="generateStrategy()">获取攻略</button>
                 </div>
-                <div class="result-area" id="strategyResult" style="display:none;">
-                    <h3>📖 你的面试攻略</h3>
-                    <div class="result-content markdown-body" id="strategyContent"></div>
+                <div class="result-card" id="strategyResult" style="display:none;">
+                    <div class="result-body markdown-body" id="strategyContent"></div>
                 </div>
             </section>
 
             <!-- 简历优化 -->
             <section class="tab-content" id="tab-resume">
-                <div class="page-header">
-                    <h2>✨ 简历优化</h2>
-                    <p>AI帮你优化措辞、突出亮点</p>
+                <div class="section-hero">
+                    <h2>简历优化</h2>
+                    <p>粘贴简历内容，AI帮你针对性优化</p>
                 </div>
-                <div class="form-card">
-                    <div class="form-group">
-                        <label>粘贴你的简历内容</label>
-                        <textarea id="resumeText" class="form-textarea" placeholder="在这里粘贴你的简历文本..." rows="5"></textarea>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>目标岗位</label>
-                            <select id="resumeJobType" class="form-select">
-                                <option value="">请选择</option>
-                                <option value="电商运营">电商运营</option>
-                                <option value="客服">客服</option>
-                                <option value="销售">销售</option>
-                                <option value="行政">行政</option>
-                                <option value="电子产品认证工程师">电子产品认证工程师</option>
-                                <option value="结构工程师">结构工程师</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>优化方向</label>
-                            <select id="resumeOptType" class="form-select">
-                                <option value="full">全面优化</option>
-                                <option value="content">内容优化</option>
-                                <option value="format">格式优化</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary btn-lg" onclick="optimizeResume()">✨ 开始优化简历</button>
+                <div class="card">
+                    <div class="form-label">目标岗位</div>
+                    <select id="resumeJobType" class="form-select">
+                        <option value="">请选择岗位</option>
+                        <option value="电商运营">电商运营</option>
+                        <option value="客服">客服</option>
+                        <option value="销售">销售</option>
+                        <option value="行政">行政</option>
+                        <option value="电子产品认证工程师">电子产品认证工程师</option>
+                        <option value="结构工程师">结构工程师</option>
+                    </select>
+                    <div class="form-label" style="margin-top:14px">你的简历内容</div>
+                    <textarea id="resumeContent" class="form-textarea" rows="6" placeholder="粘贴你的简历内容..."></textarea>
+                    <button class="btn-action" onclick="optimizeResume()">优化简历</button>
                 </div>
-                <div class="result-area" id="resumeResult" style="display:none;">
-                    <h3>📝 优化建议</h3>
-                    <div class="result-content markdown-body" id="resumeContent"></div>
+                <div class="result-card" id="resumeResult" style="display:none;">
+                    <div class="result-body markdown-body" id="resumeOptimized"></div>
                 </div>
             </section>
 
-            <!-- 话术陷阱 + 转行攻略 + 岗位信息 + 宝妈专区 合并为更多tab -->
+            <!-- 面试陷阱 -->
             <section class="tab-content" id="tab-traps">
-                <div class="page-header">
-                    <h2>🛡️ 话术陷阱</h2>
-                    <p>识别面试套路，学会聪明应对</p>
+                <div class="section-hero">
+                    <h2>面试陷阱</h2>
+                    <p>识别HR套路，避开常见坑</p>
                 </div>
-                <div class="form-card">
-                    <div class="form-group">
-                        <label>选择岗位（可选）</label>
-                        <select id="trapsJobType" class="form-select">
-                            <option value="">所有岗位</option>
-                            <option value="电商运营">电商运营</option>
-                            <option value="客服">客服</option>
-                            <option value="销售">销售</option>
-                            <option value="行政">行政</option>
-                        </select>
+                <div class="trap-list-card">
+                    <div class="trap-list-title">⚠️ 常见陷阱预览</div>
+                    <div class="trap-item">
+                        <div class="trap-q">"你最大的缺点是什么？"</div>
+                        <div class="trap-hint">→ 考察自我认知，别回答"太追求完美"</div>
                     </div>
-                    <button class="btn btn-primary" onclick="loadTraps()">🔍 查看陷阱</button>
+                    <div class="trap-item">
+                        <div class="trap-q">"为什么从上一家离职？"</div>
+                        <div class="trap-hint">→ 考察稳定性，千万别吐槽前东家</div>
+                    </div>
+                    <div class="trap-item">
+                        <div class="trap-q">"你能接受加班吗？"</div>
+                        <div class="trap-hint">→ 考察态度，回答要有弹性</div>
+                    </div>
+                    <div class="trap-item">
+                        <div class="trap-q">"你的期望薪资是多少？"</div>
+                        <div class="trap-hint">→ 先调研市场价，给出合理区间</div>
+                    </div>
                 </div>
-                <div class="traps-list" id="trapsList"></div>
+                <div class="card">
+                    <div class="form-label">选择岗位查看详细解析</div>
+                    <select id="trapJobType" class="form-select">
+                        <option value="">请选择岗位</option>
+                        <option value="电商运营">电商运营</option>
+                        <option value="客服">客服</option>
+                        <option value="销售">销售</option>
+                        <option value="行政">行政</option>
+                        <option value="通用">通用</option>
+                    </select>
+                    <button class="btn-action" onclick="showTraps()">查看陷阱解析</button>
+                </div>
+                <div class="result-card" id="trapResult" style="display:none;">
+                    <div class="result-body markdown-body" id="trapContent"></div>
+                </div>
             </section>
 
-            <!-- 更多功能 -->
+            <!-- 更多 -->
             <section class="tab-content" id="tab-more">
-                <div class="page-header">
-                    <h2>📦 更多工具</h2>
-                    <p>转行攻略、岗位信息、宝妈专区</p>
+                <div class="section-hero">
+                    <h2>更多功能</h2>
+                    <p>转行攻略 · 岗位信息 · 宝妈专区</p>
                 </div>
-                <div class="more-grid">
-                    <div class="more-card" onclick="showSubTab('career-change')">
-                        <span class="more-icon">🚀</span>
-                        <strong>转行攻略</strong>
-                        <p>规划跨岗位面试策略</p>
-                    </div>
-                    <div class="more-card" onclick="showSubTab('jobs')">
-                        <span class="more-icon">💼</span>
-                        <strong>岗位信息</strong>
-                        <p>薪资·技能·职业路径</p>
-                    </div>
-                    <div class="more-card" onclick="showSubTab('mom')">
-                        <span class="more-icon">👩‍👧‍👦</span>
-                        <strong>宝妈专区</strong>
-                        <p>带娃经验转职场竞争力</p>
-                    </div>
+                <div class="more-list">
+                    <a href="#" class="more-item" onclick="switchTab('mom');return false;">
+                        <div class="more-icon" style="background:linear-gradient(135deg,#f472b6,#ec4899)">👩</div>
+                        <div class="more-text">
+                            <div class="more-title">宝妈专区</div>
+                            <div class="more-desc">重返职场专属攻略</div>
+                        </div>
+                        <div class="more-arrow">›</div>
+                    </a>
+                    <a href="#" class="more-item" onclick="switchTab('jobs');return false;">
+                        <div class="more-icon" style="background:linear-gradient(135deg,#60a5fa,#3b82f6)">💼</div>
+                        <div class="more-text">
+                            <div class="more-title">岗位信息</div>
+                            <div class="more-desc">薪资和要求一览</div>
+                        </div>
+                        <div class="more-arrow">›</div>
+                    </a>
+                    <a href="#" class="more-item" onclick="switchTab('career');return false;">
+                        <div class="more-icon" style="background:linear-gradient(135deg,#34d399,#10b981)">📈</div>
+                        <div class="more-text">
+                            <div class="more-title">转行攻略</div>
+                            <div class="more-desc">跨行业求职指南</div>
+                        </div>
+                        <div class="more-arrow">›</div>
+                    </a>
                 </div>
+            </section>
 
-                <!-- 转行攻略子页 -->
-                <div class="sub-tab" id="subTab-career-change" style="display:none;">
-                    <div class="sub-tab-header">
-                        <button class="btn btn-back" onclick="hideSubTab()">← 返回</button>
-                        <h3>🚀 转行攻略</h3>
-                    </div>
-                    <div class="form-card">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>当前岗位</label>
-                                <input type="text" id="careerCurrentJob" class="form-input" placeholder="如：工厂普工、外卖骑手...">
-                            </div>
-                            <div class="form-group">
-                                <label>目标岗位</label>
-                                <select id="careerTargetJob" class="form-select">
-                                    <option value="">请选择</option>
-                                    <option value="电商运营">电商运营</option>
-                                    <option value="客服">客服</option>
-                                    <option value="销售">销售</option>
-                                    <option value="行政">行政</option>
-                                    <option value="电子产品认证工程师">电子产品认证工程师</option>
-                                    <option value="结构工程师">结构工程师</option>
-                                </select>
-                            </div>
+            <!-- 宝妈专区 -->
+            <section class="tab-content" id="tab-mom">
+                <div class="section-hero">
+                    <h2>宝妈专区</h2>
+                    <p>重返职场，你比想象中更强大 💪</p>
+                </div>
+                <div class="power-card">
+                    <div class="power-title">你的职场超能力</div>
+                    <div class="power-list">
+                        <div class="power-item">
+                            <div class="power-emoji">⏰</div>
+                            <div><strong>时间管理</strong><br><small>带娃+家务=多任务处理高手</small></div>
                         </div>
-                        <div class="form-group">
-                            <label>相关工作经验年限</label>
-                            <input type="number" id="careerExpYears" class="form-input" value="0" min="0" max="30">
+                        <div class="power-item">
+                            <div class="power-emoji">❤️</div>
+                            <div><strong>耐心与同理心</strong><br><small>育儿培养的强大沟通力</small></div>
                         </div>
-                        <button class="btn btn-primary btn-lg" onclick="getCareerChange()">🚀 生成转行攻略</button>
-                    </div>
-                    <div class="result-area" id="careerResult" style="display:none;">
-                        <h3>🗺️ 转行路线图</h3>
-                        <div class="result-content markdown-body" id="careerContent"></div>
+                        <div class="power-item">
+                            <div class="power-emoji">🛡️</div>
+                            <div><strong>抗压能力</strong><br><small>带娃的辛苦比工作大多了</small></div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- 岗位信息子页 -->
-                <div class="sub-tab" id="subTab-jobs" style="display:none;">
-                    <div class="sub-tab-header">
-                        <button class="btn btn-back" onclick="hideSubTab()">← 返回</button>
-                        <h3>💼 岗位信息库</h3>
+                <div class="card">
+                    <div class="form-label">你想应聘的岗位</div>
+                    <select id="momTargetJob" class="form-select">
+                        <option value="">请选择目标岗位</option>
+                        <option value="客服">客服（推荐入门）</option>
+                        <option value="行政">行政（推荐入门）</option>
+                        <option value="电商运营">电商运营（宝妈优势）</option>
+                        <option value="销售">销售（时间灵活）</option>
+                        <option value="电子产品认证工程师">电子产品认证工程师</option>
+                        <option value="结构工程师">结构工程师</option>
+                    </select>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-label">离开职场几年？</div>
+                            <input type="number" id="momGapYears" class="form-input" value="2" min="0" max="20">
+                        </div>
+                        <div class="form-col">
+                            <div class="form-label">之前的工作</div>
+                            <input type="text" id="momPreviousJob" class="form-input" placeholder="如：文员、销售">
+                        </div>
                     </div>
-                    <div class="jobs-grid" id="jobsGrid"></div>
+                    <button class="btn-action" onclick="generateMomStrategy()">生成专属攻略</button>
                 </div>
+                <div class="result-card" id="momResult" style="display:none;">
+                    <div class="result-body markdown-body" id="momContent"></div>
+                </div>
+                <div class="mom-jobs-section" id="momJobsRecommend">
+                    <div class="section-sub-title">宝妈友好岗位推荐</div>
+                    <div class="mom-jobs-list" id="momJobsGrid"></div>
+                </div>
+            </section>
 
-                <!-- 宝妈专区子页 -->
-                <div class="sub-tab" id="subTab-mom" style="display:none;">
-                    <div class="sub-tab-header">
-                        <button class="btn btn-back" onclick="hideSubTab()">← 返回</button>
-                        <h3>👩‍👧‍👦 宝妈专区</h3>
-                    </div>
-                    <div class="mom-intro">
-                        <div class="intro-card">
-                            <h3>💪 宝妈的职场超能力</h3>
-                            <div class="superpowers-grid">
-                                <div class="superpower-item">
-                                    <span class="sp-icon">⏰</span>
-                                    <strong>时间管理大师</strong>
-                                    <p>带娃+家务=多任务处理高手</p>
-                                </div>
-                                <div class="superpower-item">
-                                    <span class="sp-icon">💝</span>
-                                    <strong>耐心与同理心</strong>
-                                    <p>育儿培养了强大的沟通能力</p>
-                                </div>
-                                <div class="superpower-item">
-                                    <span class="sp-icon">💪</span>
-                                    <strong>抗压能力MAX</strong>
-                                    <p>带娃的辛苦比工作压力大多了</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-card">
-                        <h3>🌟 生成你的专属攻略</h3>
-                        <div class="form-group">
-                            <label>你想应聘的岗位</label>
-                            <select id="momTargetJob" class="form-select">
-                                <option value="">请选择目标岗位</option>
-                                <option value="客服">🎧 客服（推荐入门）</option>
-                                <option value="行政">📎 行政（推荐入门）</option>
-                                <option value="电商运营">🛒 电商运营（宝妈优势）</option>
-                                <option value="销售">💰 销售（时间灵活）</option>
-                                <option value="电子产品认证工程师">🔧 电子产品认证工程师</option>
-                                <option value="结构工程师">⚙️ 结构工程师</option>
-                            </select>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>离开职场多少年？</label>
-                                <input type="number" id="momGapYears" class="form-input" value="2" min="0" max="20">
-                            </div>
-                            <div class="form-group">
-                                <label>之前的工作（选填）</label>
-                                <input type="text" id="momPreviousJob" class="form-input" placeholder="如：文员、销售...">
-                            </div>
-                        </div>
-                        <button class="btn btn-primary btn-lg btn-glow" onclick="generateMomStrategy()">✨ 生成宝妈专属攻略</button>
-                    </div>
-                    <div class="result-area" id="momResult" style="display:none;">
-                        <h3>🌟 你的专属攻略</h3>
-                        <div class="result-content markdown-body" id="momContent"></div>
-                    </div>
-                    <div class="mom-jobs-recommend" id="momJobsRecommend">
-                        <h3>📊 宝妈友好岗位推荐</h3>
-                        <p class="section-desc">按转行难度从低到高排序</p>
-                        <div class="mom-jobs-grid" id="momJobsGrid"></div>
-                    </div>
+            <!-- 岗位信息 -->
+            <section class="tab-content" id="tab-jobs">
+                <div class="section-hero">
+                    <h2>岗位信息</h2>
+                    <p>热门岗位薪资和要求</p>
+                </div>
+                <div class="jobs-list" id="jobsGrid"></div>
+            </section>
+
+            <!-- 转行攻略 -->
+            <section class="tab-content" id="tab-career">
+                <div class="section-hero">
+                    <h2>转行攻略</h2>
+                    <p>跨行业求职指南</p>
+                </div>
+                <div class="card">
+                    <div class="form-label">你目前的行业</div>
+                    <input type="text" id="careerCurrent" class="form-input" placeholder="如：制造业、教育">
+                    <div class="form-label" style="margin-top:14px">目标行业</div>
+                    <select id="careerTarget" class="form-select">
+                        <option value="">请选择目标行业</option>
+                        <option value="电商">电商</option>
+                        <option value="互联网">互联网</option>
+                        <option value="金融">金融</option>
+                        <option value="教育">教育</option>
+                        <option value="其他">其他</option>
+                    </select>
+                    <button class="btn-action" onclick="generateCareerGuide()">获取转行攻略</button>
+                </div>
+                <div class="result-card" id="careerResult" style="display:none;">
+                    <div class="result-body markdown-body" id="careerContent"></div>
                 </div>
             </section>
         </main>
@@ -345,33 +322,52 @@
         <!-- 底部Tab导航 -->
         <nav class="bottom-tabs">
             <a href="#" class="tab-item active" data-tab="interview">
-                <span class="tab-icon">🎤</span>
-                <span class="tab-label">面试</span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <line x1="12" y1="19" x2="12" y2="23"/>
+                    <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+                <span>面试</span>
             </a>
             <a href="#" class="tab-item" data-tab="strategy">
-                <span class="tab-icon">📋</span>
-                <span class="tab-label">攻略</span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+                <span>攻略</span>
             </a>
             <a href="#" class="tab-item" data-tab="resume">
-                <span class="tab-icon">✨</span>
-                <span class="tab-label">简历</span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+                <span>简历</span>
             </a>
             <a href="#" class="tab-item" data-tab="traps">
-                <span class="tab-icon">🛡️</span>
-                <span class="tab-label">陷阱</span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <span>陷阱</span>
             </a>
             <a href="#" class="tab-item" data-tab="more">
-                <span class="tab-icon">📦</span>
-                <span class="tab-label">更多</span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="1"/>
+                    <circle cx="19" cy="12" r="1"/>
+                    <circle cx="5" cy="12" r="1"/>
+                </svg>
+                <span>更多</span>
             </a>
         </nav>
     </div>
 
     <!-- 加载遮罩 -->
     <div class="loading-overlay" id="loadingOverlay" style="display:none;">
-        <div class="loading-content">
+        <div class="loading-box">
             <div class="loading-spinner"></div>
-            <p class="loading-text">AI正在思考中...</p>
+            <p id="loadingText">AI正在思考中...</p>
         </div>
     </div>
 
