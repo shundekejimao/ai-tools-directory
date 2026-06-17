@@ -585,8 +585,8 @@ HR_TRAPS = {
 
 # ============ 功能API ============
 
-@app.get("/")
-async def root():
+@app.get("/api/health")
+async def health_check():
     return {"message": "AI面试官 API服务", "version": "1.0.0"}
 
 @app.post("/api/interview/start")
