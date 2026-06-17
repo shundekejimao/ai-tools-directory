@@ -885,3 +885,95 @@ body {
     .more-arrow { display: none; }
     .jobs-list, .mom-jobs-list { display: grid; grid-template-columns: repeat(2, 1fr); }
 }
+
+
+/* ============ Chat Active - Hide Bottom Tabs ============ */
+.app.chat-active .bottom-tabs { display: none; }
+.app.chat-active .main-content { overflow: hidden; }
+.app.chat-active .tab-content { padding: 0; padding-bottom: 0; }
+.app.chat-active .chat-view { height: calc(100dvh - var(--top-h)); margin: 0; }
+
+/* ============ Voice / TTS ============ */
+.voice-toggle {
+    background: none;
+    border: none;
+    color: var(--text-3);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+.voice-toggle.active {
+    color: var(--primary);
+    background: var(--primary-bg);
+}
+.voice-toggle svg { width: 18px; height: 18px; }
+
+.bubble-speak {
+    background: none;
+    border: none;
+    color: var(--text-3);
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+.bubble-speak:hover { color: var(--primary); background: var(--primary-bg); }
+.bubble-speak.speaking { color: var(--primary); }
+.bubble-speak svg { width: 13px; height: 13px; }
+
+@keyframes speakPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+.bubble-speak.speaking svg {
+    animation: speakPulse 0.8s infinite;
+}
+
+/* Voice recording button */
+.voice-record-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: var(--bg);
+    color: var(--text-3);
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.voice-record-btn.recording {
+    background: rgba(239,68,68,0.1);
+    color: var(--danger);
+}
+.voice-record-btn svg { width: 18px; height: 18px; }
+
+@keyframes recordPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+.voice-record-btn.recording {
+    animation: recordPulse 1s infinite;
+}
+
+/* Inline error */
+.chat-error {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    margin: 8px 0;
+    line-height: 1.6;
+}

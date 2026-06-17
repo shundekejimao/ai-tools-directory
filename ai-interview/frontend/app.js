@@ -14,6 +14,151 @@ let interviewState = {
     isActive: false
 };
 
+// ============ Voice / TTS ============
+let autoSpeak = false;       // auto-read AI replies
+let currentUtterance = null; // currently speaking utterance
+let isRecording = false;     // voice input active
+let recognition = null;      // SpeechRecognition instance
+
+function toggleAutoSpeak() {
+    autoSpeak = !autoSpeak;
+    const btn = document.getElementById('voiceToggle');
+    if (btn) btn.classList.toggle('active', autoSpeak);
+    if (!autoSpeak && currentUtterance) {
+        speechSynthesis.cancel();
+        currentUtterance = null;
+    }
+}
+
+function speakText(text) {
+    if (!autoSpeak || !window.speechSynthesis) return;
+    // Cancel previous
+    speechSynthesis.cancel();
+    // Clean markdown for speech
+    const cleanText = text
+        .replace(/#{1,6}\s/g, '')
+        .replace(/\*\*(.+?)\*\*/g, '$1')
+        .replace(/\*(.+?)\*/g, '$1')
+        .replace(/^[-*]\s/gm, '')
+        .replace(/^\d+\.\s/gm, '')
+        .replace(/\n+/g, '。')
+        .replace(/#{1,6}\s/g, '');
+
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.lang = 'zh-CN';
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+    // Try to find a Chinese voice
+    const voices = speechSynthesis.getVoices();
+    const zhVoice = voices.find(v => v.lang.startsWith('zh'));
+    if (zhVoice) utterance.voice = zhVoice;
+
+    currentUtterance = utterance;
+    utterance.onend = () => { currentUtterance = null; };
+    speechSynthesis.speak(utterance);
+}
+
+function speakBubble(el) {
+    const text = el.closest('.chat-bubble').querySelector('.bubble-inner')?.textContent || '';
+    if (!text) return;
+    // Toggle off if same bubble is speaking
+    if (currentUtterance && el.classList.contains('speaking')) {
+        speechSynthesis.cancel();
+        el.classList.remove('speaking');
+        currentUtterance = null;
+        return;
+    }
+    speechSynthesis.cancel();
+    el.classList.add('speaking');
+    const cleanText = text
+        .replace(/#{1,6}\s/g, '')
+        .replace(/\*\*(.+?)\*\*/g, '$1')
+        .replace(/\*(.+?)\*/g, '$1')
+        .replace(/^[-*]\s/gm, '')
+        .replace(/^\d+\.\s/gm, '')
+        .replace(/\n+/g, '。');
+
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.lang = 'zh-CN';
+    utterance.rate = 1.0;
+    const voices = speechSynthesis.getVoices();
+    const zhVoice = voices.find(v => v.lang.startsWith('zh'));
+    if (zhVoice) utterance.voice = zhVoice;
+    currentUtterance = utterance;
+    utterance.onend = () => { el.classList.remove('speaking'); currentUtterance = null; };
+    utterance.onerror = () => { el.classList.remove('speaking'); currentUtterance = null; };
+    speechSynthesis.speak(utterance);
+}
+
+// ============ Voice Input (STT) ============
+function toggleVoiceInput() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        alert('你的浏览器暂不支持语音输入，请使用Chrome浏览器');
+        return;
+    }
+
+    if (isRecording) {
+        stopVoiceInput();
+        return;
+    }
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = 'zh-CN';
+    recognition.interimResults = true;
+    recognition.continuous = false;
+    recognition.maxAlternatives = 1;
+
+    const input = document.getElementById('chatInput');
+    const btn = document.getElementById('voiceRecordBtn');
+
+    recognition.onstart = () => {
+        isRecording = true;
+        btn.classList.add('recording');
+        input.placeholder = '正在听你说...';
+    };
+
+    recognition.onresult = (event) => {
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            transcript += event.results[i][0].transcript;
+        }
+        input.value = transcript;
+        input.style.height = 'auto';
+        input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+    };
+
+    recognition.onend = () => {
+        stopVoiceInput();
+        // Auto-send if we got text
+        if (input.value.trim()) {
+            setTimeout(() => sendMessage(), 300);
+        }
+    };
+
+    recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+        stopVoiceInput();
+        if (event.error === 'not-allowed') {
+            alert('请允许麦克风权限以使用语音输入');
+        }
+    };
+
+    recognition.start();
+}
+
+function stopVoiceInput() {
+    isRecording = false;
+    const btn = document.getElementById('voiceRecordBtn');
+    const input = document.getElementById('chatInput');
+    if (btn) btn.classList.remove('recording');
+    if (input) input.placeholder = '输入或语音说出你的回答...';
+    if (recognition) {
+        try { recognition.stop(); } catch(e) {}
+        recognition = null;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     loadJobs();
@@ -128,6 +273,7 @@ async function startInterview() {
         hideLoading();
         document.getElementById('interviewSetup').style.display = 'none';
         document.getElementById('interviewChat').style.display = 'flex';
+        document.querySelector('.app').classList.add('chat-active');
         document.getElementById('chatTitle').textContent = jobType;
 
         document.getElementById('chatMessages').innerHTML = '';
@@ -154,12 +300,23 @@ function addChatBubble(role, label, content) {
         iconSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
     }
     
+    // Add speak button for AI messages
+    let speakBtn = '';
+    if (role === 'ai') {
+        speakBtn = '<button class="bubble-speak" onclick="speakBubble(this)" title="朗读"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button>';
+    }
+    
     bubble.innerHTML = `
-        <div class="bubble-label">${iconSvg} ${label}</div>
+        <div class="bubble-label">${iconSvg} ${label}${speakBtn}</div>
         <div class="bubble-inner">${renderMarkdown(content)}</div>
     `;
     container.appendChild(bubble);
     container.scrollTop = container.scrollHeight;
+    
+    // Auto-speak for AI messages
+    if (role === 'ai') {
+        speakText(content);
+    }
 }
 
 function updateChatCount() {
@@ -198,10 +355,15 @@ async function sendMessage() {
 }
 
 async function endInterview() {
+    // Stop any voice
+    if (currentUtterance) { speechSynthesis.cancel(); currentUtterance = null; }
+    stopVoiceInput();
+    
     if (!interviewState.isActive) {
-        // 已结束，直接返回
+        // Already ended, return to setup
         document.getElementById('interviewSetup').style.display = 'block';
         document.getElementById('interviewChat').style.display = 'none';
+        document.querySelector('.app').classList.remove('chat-active');
         return;
     }
 
