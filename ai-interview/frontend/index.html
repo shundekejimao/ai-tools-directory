@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>面试练兵场 - AI模拟面试</title>
     <link rel="stylesheet" href="/static/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
     <div class="app">
         <!-- 顶部导航栏 -->
         <header class="top-bar">
             <div class="top-bar-left">
-                <div class="logo-icon">面</div>
+                <div class="logo-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                </div>
                 <span class="logo-text">面试练兵场</span>
             </div>
             <div class="api-status" id="apiStatus">
@@ -27,6 +28,9 @@
             <section class="tab-content active" id="tab-interview">
                 <div class="interview-setup" id="interviewSetup">
                     <div class="hero-banner">
+                        <div class="hero-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                        </div>
                         <h2>AI模拟面试</h2>
                         <p>选岗位 → 开始面试 → AI实时追问 → 获取评估</p>
                     </div>
@@ -35,12 +39,12 @@
                         <div class="setup-label">选择面试岗位</div>
                         <select id="interviewJobType" class="form-select">
                             <option value="">请选择岗位</option>
-                            <option value="电商运营">📦 电商运营</option>
-                            <option value="客服">🎯 客服</option>
-                            <option value="销售">💰 销售</option>
-                            <option value="行政">📋 行政</option>
-                            <option value="电子产品认证工程师">🔬 电子产品认证工程师</option>
-                            <option value="结构工程师">🏗️ 结构工程师</option>
+                            <option value="电商运营">电商运营</option>
+                            <option value="客服">客服</option>
+                            <option value="销售">销售</option>
+                            <option value="行政">行政</option>
+                            <option value="电子产品认证工程师">电子产品认证工程师</option>
+                            <option value="结构工程师">结构工程师</option>
                         </select>
                     </div>
 
@@ -50,7 +54,7 @@
                             <label class="diff-option">
                                 <input type="radio" name="difficulty" value="easy">
                                 <span class="diff-btn easy">
-                                    <span class="diff-icon">🌱</span>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
                                     <span class="diff-name">简单</span>
                                     <span class="diff-sub">初级入门</span>
                                 </span>
@@ -58,7 +62,7 @@
                             <label class="diff-option">
                                 <input type="radio" name="difficulty" value="medium" checked>
                                 <span class="diff-btn medium">
-                                    <span class="diff-icon">🔥</span>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                                     <span class="diff-name">中等</span>
                                     <span class="diff-sub">有经验</span>
                                 </span>
@@ -66,7 +70,7 @@
                             <label class="diff-option">
                                 <input type="radio" name="difficulty" value="hard">
                                 <span class="diff-btn hard">
-                                    <span class="diff-icon">💎</span>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                                     <span class="diff-name">困难</span>
                                     <span class="diff-sub">高级专家</span>
                                 </span>
@@ -81,17 +85,25 @@
 
                 <div class="chat-view" id="interviewChat" style="display:none;">
                     <div class="chat-top">
-                        <button class="chat-back" onclick="endInterview()">← 退出</button>
+                        <button class="chat-back" onclick="endInterview()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                            退出
+                        </button>
                         <div class="chat-top-info">
                             <span class="chat-top-title" id="chatTitle">模拟面试</span>
                             <span class="chat-top-badge" id="chatCount">第1题</span>
                         </div>
-                        <div class="chat-top-dot"></div>
+                        <div class="chat-top-live">
+                            <span class="live-dot"></span>
+                            LIVE
+                        </div>
                     </div>
                     <div class="chat-body" id="chatMessages"></div>
                     <div class="chat-bottom">
                         <textarea id="chatInput" class="chat-textarea" placeholder="输入你的回答..." rows="1"></textarea>
-                        <button class="chat-send" onclick="sendMessage()">发送</button>
+                        <button class="chat-send" onclick="sendMessage()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -160,22 +172,25 @@
                     <p>识别HR套路，避开常见坑</p>
                 </div>
                 <div class="trap-list-card">
-                    <div class="trap-list-title">⚠️ 常见陷阱预览</div>
+                    <div class="trap-list-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        常见陷阱预览
+                    </div>
                     <div class="trap-item">
                         <div class="trap-q">"你最大的缺点是什么？"</div>
-                        <div class="trap-hint">→ 考察自我认知，别回答"太追求完美"</div>
+                        <div class="trap-hint">考察自我认知，别回答"太追求完美"</div>
                     </div>
                     <div class="trap-item">
                         <div class="trap-q">"为什么从上一家离职？"</div>
-                        <div class="trap-hint">→ 考察稳定性，千万别吐槽前东家</div>
+                        <div class="trap-hint">考察稳定性，千万别吐槽前东家</div>
                     </div>
                     <div class="trap-item">
                         <div class="trap-q">"你能接受加班吗？"</div>
-                        <div class="trap-hint">→ 考察态度，回答要有弹性</div>
+                        <div class="trap-hint">考察态度，回答要有弹性</div>
                     </div>
                     <div class="trap-item">
                         <div class="trap-q">"你的期望薪资是多少？"</div>
-                        <div class="trap-hint">→ 先调研市场价，给出合理区间</div>
+                        <div class="trap-hint">先调研市场价，给出合理区间</div>
                     </div>
                 </div>
                 <div class="card">
@@ -199,32 +214,38 @@
             <section class="tab-content" id="tab-more">
                 <div class="section-hero">
                     <h2>更多功能</h2>
-                    <p>转行攻略 · 岗位信息 · 宝妈专区</p>
+                    <p>转行攻略 / 岗位信息 / 宝妈专区</p>
                 </div>
                 <div class="more-list">
                     <a href="#" class="more-item" onclick="switchTab('mom');return false;">
-                        <div class="more-icon" style="background:linear-gradient(135deg,#f472b6,#ec4899)">👩</div>
+                        <div class="more-icon icon-mom">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
                         <div class="more-text">
                             <div class="more-title">宝妈专区</div>
                             <div class="more-desc">重返职场专属攻略</div>
                         </div>
-                        <div class="more-arrow">›</div>
+                        <svg class="more-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                     </a>
                     <a href="#" class="more-item" onclick="switchTab('jobs');return false;">
-                        <div class="more-icon" style="background:linear-gradient(135deg,#60a5fa,#3b82f6)">💼</div>
+                        <div class="more-icon icon-jobs">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                        </div>
                         <div class="more-text">
                             <div class="more-title">岗位信息</div>
                             <div class="more-desc">薪资和要求一览</div>
                         </div>
-                        <div class="more-arrow">›</div>
+                        <svg class="more-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                     </a>
                     <a href="#" class="more-item" onclick="switchTab('career');return false;">
-                        <div class="more-icon" style="background:linear-gradient(135deg,#34d399,#10b981)">📈</div>
+                        <div class="more-icon icon-career">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                        </div>
                         <div class="more-text">
                             <div class="more-title">转行攻略</div>
                             <div class="more-desc">跨行业求职指南</div>
                         </div>
-                        <div class="more-arrow">›</div>
+                        <svg class="more-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                     </a>
                 </div>
             </section>
@@ -233,21 +254,27 @@
             <section class="tab-content" id="tab-mom">
                 <div class="section-hero">
                     <h2>宝妈专区</h2>
-                    <p>重返职场，你比想象中更强大 💪</p>
+                    <p>重返职场，你比想象中更强大</p>
                 </div>
                 <div class="power-card">
                     <div class="power-title">你的职场超能力</div>
                     <div class="power-list">
                         <div class="power-item">
-                            <div class="power-emoji">⏰</div>
+                            <div class="power-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
                             <div><strong>时间管理</strong><br><small>带娃+家务=多任务处理高手</small></div>
                         </div>
                         <div class="power-item">
-                            <div class="power-emoji">❤️</div>
+                            <div class="power-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </div>
                             <div><strong>耐心与同理心</strong><br><small>育儿培养的强大沟通力</small></div>
                         </div>
                         <div class="power-item">
-                            <div class="power-emoji">🛡️</div>
+                            <div class="power-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
                             <div><strong>抗压能力</strong><br><small>带娃的辛苦比工作大多了</small></div>
                         </div>
                     </div>
@@ -322,42 +349,23 @@
         <!-- 底部Tab导航 -->
         <nav class="bottom-tabs">
             <a href="#" class="tab-item active" data-tab="interview">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                    <line x1="12" y1="19" x2="12" y2="23"/>
-                    <line x1="8" y1="23" x2="16" y2="23"/>
-                </svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
                 <span>面试</span>
             </a>
             <a href="#" class="tab-item" data-tab="strategy">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                </svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 <span>攻略</span>
             </a>
             <a href="#" class="tab-item" data-tab="resume">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="16" y1="13" x2="8" y2="13"/>
-                    <line x1="16" y1="17" x2="8" y2="17"/>
-                </svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                 <span>简历</span>
             </a>
             <a href="#" class="tab-item" data-tab="traps">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 <span>陷阱</span>
             </a>
             <a href="#" class="tab-item" data-tab="more">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="1"/>
-                    <circle cx="19" cy="12" r="1"/>
-                    <circle cx="5" cy="12" r="1"/>
-                </svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
                 <span>更多</span>
             </a>
         </nav>
