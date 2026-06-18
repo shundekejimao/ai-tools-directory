@@ -945,5 +945,35 @@
     "related_combinations": [],
     "date_added": "2026-05-25",
     "date_updated": "2026-05-25"
+  },
+  {
+    "id": "tool-roblox-gui-maker",
+    "slug": "roblox-gui-maker",
+    "name": "Roblox GUI Maker",
+    "category": "code",
+    "description": "免费AI Roblox Studio GUI规划工具，可生成ScreenGui布局、HUD菜单和Lua UI起步代码建议",
+    "description_short": "免费AI Roblox Studio GUI规划工具",
+    "features": [
+      "Roblox Studio GUI规划",
+      "HUD菜单和背包界面草图",
+      "Lua UI起步代码建议"
+    ],
+    "shortcomings": "仍需要在Roblox Studio中手动实现和调试",
+    "pricing_tier": "free",
+    "pricing_detail": "免费浏览器工具",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "https://robloxguimaker.dev/",
+    "tags": [
+      "免费",
+      "Roblox",
+      "游戏开发",
+      "UI"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-06-18",
+    "date_updated": "2026-06-18"
   }
 ]
