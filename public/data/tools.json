@@ -1,5 +1,36 @@
 [
   {
+    "id": "tool-remio",
+    "slug": "remio",
+    "name": "Remio",
+    "category": "office",
+    "description": "本地优先AI记忆和个人知识库，解析文件、网页、录音、邮件、消息、图片和笔记，并建立本地索引与向量",
+    "description_short": "本地优先AI记忆和个人知识库",
+    "features": [
+      "多格式文件和网页解析",
+      "本地索引和向量检索",
+      "为用户和Agent提供聚焦的个人上下文"
+    ],
+    "shortcomings": "CLI / Agent 工作流需要配合 Remio 桌面客户端使用",
+    "pricing_tier": "freemium",
+    "pricing_detail": "",
+    "china_accessible": true,
+    "beginner_friendly": true,
+    "ecommerce_relevant": false,
+    "url": "https://remio.ai",
+    "tags": [
+      "知识库",
+      "本地优先",
+      "AI记忆",
+      "文件解析",
+      "向量检索"
+    ],
+    "complementary_tools": [],
+    "related_combinations": [],
+    "date_added": "2026-06-25",
+    "date_updated": "2026-06-25"
+  },
+  {
     "id": "tool-browseros",
     "slug": "browseros",
     "name": "BrowserOS",
